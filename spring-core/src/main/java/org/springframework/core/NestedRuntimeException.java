@@ -36,6 +36,7 @@ import org.springframework.lang.Nullable;
  * @see #printStackTrace
  * @see NestedCheckedException
  */
+// 嵌套的 runtime exception
 public abstract class NestedRuntimeException extends RuntimeException {
 
 	/** Use serialVersionUID from Spring 1.2 for interoperability. */

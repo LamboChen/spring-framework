@@ -25,6 +25,7 @@ import org.springframework.lang.Nullable;
  * @author Rod Johnson
  */
 @SuppressWarnings("serial")
+// 致命的、不可恢复的问题 导致的异常
 public class FatalBeanException extends BeansException {
 
 	/**

@@ -25,6 +25,7 @@ package org.springframework.beans.factory;
  * @since 2.0
  */
 @SuppressWarnings("serial")
+// 不被允许创建的 bean 在请求创建时发生？
 public class BeanCreationNotAllowedException extends BeanCreationException {
 
 	/**
