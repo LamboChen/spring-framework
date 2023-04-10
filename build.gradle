@@ -1,5 +1,6 @@
 buildscript {
 	repositories {
+		maven{ url 'https://maven.aliyun.com/repository/public'}
 		maven { url "https://repo.spring.io/plugins-release" }
 	}
 	dependencies {
@@ -155,6 +156,7 @@ configure(allprojects) { project ->
 	}
 
 	repositories {
+		maven{ url 'https://maven.aliyun.com/repository/public'}
 		mavenCentral()
 		maven { url "https://repo.spring.io/libs-release" }
 		maven { url "https://repo.spring.io/milestone" } // Reactor
