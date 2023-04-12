@@ -24,11 +24,13 @@ package org.springframework.context;
  * @since 3.0
  * @see SmartLifecycle
  */
+// 分阶段
 public interface Phased {
 
 	/**
 	 * Return the phase value of this object.
 	 */
+	// 返回此对象的相位值，即处于哪个阶段
 	int getPhase();
 
 }

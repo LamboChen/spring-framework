@@ -28,6 +28,7 @@ import org.springframework.beans.factory.Aware;
  * @since 1.1.1
  * @see ApplicationContextAware
  */
+// 应用事件发布器 aware 接口
 public interface ApplicationEventPublisherAware extends Aware {
 
 	/**
@@ -37,6 +38,7 @@ public interface ApplicationEventPublisherAware extends Aware {
 	 * Invoked before ApplicationContextAware's setApplicationContext.
 	 * @param applicationEventPublisher event publisher to be used by this object
 	 */
+	// 实例化后初始化前，且 ApplicationContextAware 之前调用
 	void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher);
 
 }

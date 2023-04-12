@@ -25,6 +25,7 @@ import org.springframework.util.Assert;
  * @author Juergen Hoeller
  * @since 3.0
  */
+// bean 表达式上下文
 public class BeanExpressionContext {
 
 	private final ConfigurableBeanFactory beanFactory;

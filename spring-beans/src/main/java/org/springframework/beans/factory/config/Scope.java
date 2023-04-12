@@ -57,6 +57,7 @@ import org.springframework.lang.Nullable;
  * @see org.springframework.web.context.request.RequestScope
  * @see org.springframework.web.context.request.SessionScope
  */
+// bean 作用域顶层接口
 public interface Scope {
 
 	/**

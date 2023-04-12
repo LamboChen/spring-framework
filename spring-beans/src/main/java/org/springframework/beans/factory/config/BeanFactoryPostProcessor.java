@@ -43,6 +43,7 @@ import org.springframework.beans.BeansException;
  * @see PropertyResourceConfigurer
  */
 @FunctionalInterface
+// bean factory 后置处理器
 public interface BeanFactoryPostProcessor {
 
 	/**
@@ -53,6 +54,9 @@ public interface BeanFactoryPostProcessor {
 	 * @param beanFactory the bean factory used by the application context
 	 * @throws org.springframework.beans.BeansException in case of errors
 	 */
+	// 在标准初始化后修改应用程序上下文的内部 bean 工厂。
+	// 所有 bean 定义都已加载，但尚未实例化任何 bean。
+	// 这允许覆盖或添加属性，甚至是急切初始化的 bean。
 	void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException;
 
 }

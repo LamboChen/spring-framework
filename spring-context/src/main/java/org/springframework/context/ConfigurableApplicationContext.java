@@ -40,6 +40,7 @@ import org.springframework.lang.Nullable;
  * @author Chris Beams
  * @since 03.11.2003
  */
+// 可配置的 application context
 public interface ConfigurableApplicationContext extends ApplicationContext, Lifecycle, Closeable {
 
 	/**

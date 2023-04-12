@@ -99,12 +99,14 @@ import java.lang.annotation.Target;
 @Target({ElementType.CONSTRUCTOR, ElementType.METHOD, ElementType.PARAMETER, ElementType.FIELD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+// 自动装配
 public @interface Autowired {
 
 	/**
 	 * Declares whether the annotated dependency is required.
 	 * <p>Defaults to {@code true}.
 	 */
+	// 声明是否必须，即是否可注入 null
 	boolean required() default true;
 
 }

@@ -23,6 +23,7 @@ package org.springframework.core.convert.converter;
  * @author Juergen Hoeller
  * @since 3.0
  */
+// converter 注册接口
 public interface ConverterRegistry {
 
 	/**

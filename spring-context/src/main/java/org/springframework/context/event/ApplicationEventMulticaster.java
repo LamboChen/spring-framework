@@ -34,6 +34,7 @@ import org.springframework.lang.Nullable;
  * @author Stephane Nicoll
  * @see ApplicationListener
  */
+// 应用程序事件广播器
 public interface ApplicationEventMulticaster {
 
 	/**

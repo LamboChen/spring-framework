@@ -59,6 +59,7 @@ import org.springframework.core.io.ResourceLoader;
  * @see org.springframework.core.io.ResourceLoader
  * @see org.springframework.core.io.support.ResourcePatternResolver
  */
+// 资源加载器 aware 接口，用于注入 ResourceLoader
 public interface ResourceLoaderAware extends Aware {
 
 	/**
@@ -73,6 +74,7 @@ public interface ResourceLoaderAware extends Aware {
 	 * @see org.springframework.core.io.support.ResourcePatternResolver
 	 * @see org.springframework.core.io.support.ResourcePatternUtils#getResourcePatternResolver
 	 */
+	// 实例化后初始化前调用，且在 ApplicationContextAware 前
 	void setResourceLoader(ResourceLoader resourceLoader);
 
 }

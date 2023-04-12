@@ -41,6 +41,7 @@ package org.springframework.beans.factory;
  * @since 4.1
  * @see org.springframework.beans.factory.config.ConfigurableListableBeanFactory#preInstantiateSingletons()
  */
+// 智能初始化单例对象
 public interface SmartInitializingSingleton {
 
 	/**
@@ -53,6 +54,7 @@ public interface SmartInitializingSingleton {
 	 * and not for any other bean scope either. Carefully use it for beans
 	 * with the intended bootstrap semantics only.
 	 */
+	// 在单例预实例化阶段结束时调用，保证所有常规单例 bean 都已创建
 	void afterSingletonsInstantiated();
 
 }

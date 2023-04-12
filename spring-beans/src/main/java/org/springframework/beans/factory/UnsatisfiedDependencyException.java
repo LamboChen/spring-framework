@@ -30,6 +30,7 @@ import org.springframework.util.StringUtils;
  * @since 03.09.2003
  */
 @SuppressWarnings("serial")
+// 不符合预期的依赖异常
 public class UnsatisfiedDependencyException extends BeanCreationException {
 
 	@Nullable

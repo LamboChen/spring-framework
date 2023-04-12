@@ -38,6 +38,7 @@ import org.springframework.lang.Nullable;
  * @see BeanFactory#getBeanProvider
  * @see org.springframework.beans.factory.annotation.Autowired
  */
+// Object 提供者，可生产 Object 或者 对 Object 实例化进行包装
 public interface ObjectProvider<T> extends ObjectFactory<T>, Iterable<T> {
 
 	/**

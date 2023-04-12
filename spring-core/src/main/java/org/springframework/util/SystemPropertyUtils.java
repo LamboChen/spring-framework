@@ -33,6 +33,7 @@ import org.springframework.lang.Nullable;
  * @see #PLACEHOLDER_SUFFIX
  * @see System#getProperty(String)
  */
+// 系统属性工具类
 public abstract class SystemPropertyUtils {
 
 	/** Prefix for system property placeholders: "${". */

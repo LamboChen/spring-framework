@@ -56,6 +56,7 @@ import org.springframework.beans.factory.Aware;
  * @see org.springframework.context.support.ApplicationObjectSupport
  * @see org.springframework.beans.factory.BeanFactoryAware
  */
+// 应用程序上下文 Aware 接口，主要用于 ApplicationContext 注入
 public interface ApplicationContextAware extends Aware {
 
 	/**
@@ -71,6 +72,7 @@ public interface ApplicationContextAware extends Aware {
 	 * @throws BeansException if thrown by application context methods
 	 * @see org.springframework.beans.factory.BeanInitializationException
 	 */
+	// 实例化后，初始化前调用，并且在 ResourceLoaderAware 之后
 	void setApplicationContext(ApplicationContext applicationContext) throws BeansException;
 
 }

@@ -59,6 +59,7 @@ package org.springframework.context;
  * @see LifecycleProcessor
  * @see ConfigurableApplicationContext
  */
+// 智能的生命周期接口
 public interface SmartLifecycle extends Lifecycle, Phased {
 
 	/**

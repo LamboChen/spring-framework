@@ -81,6 +81,7 @@ import org.springframework.util.StringUtils;
  * @see ResolvableTypeProvider
  */
 @SuppressWarnings("serial")
+// 可解析的类型
 public class ResolvableType implements Serializable {
 
 	/**

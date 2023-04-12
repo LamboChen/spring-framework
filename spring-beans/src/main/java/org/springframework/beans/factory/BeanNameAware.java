@@ -33,6 +33,7 @@ package org.springframework.beans.factory;
  * @see BeanFactoryAware
  * @see InitializingBean
  */
+// 注入 Bean name，
 public interface BeanNameAware extends Aware {
 
 	/**
@@ -47,6 +48,7 @@ public interface BeanNameAware extends Aware {
 	 * "#..." suffixes. Use the {@link BeanFactoryUtils#originalBeanName(String)}
 	 * method to extract the original bean name (without suffix), if desired.
 	 */
+	// 初始化 bean 的时候调用（此时已创建 bean ）
 	void setBeanName(String name);
 
 }

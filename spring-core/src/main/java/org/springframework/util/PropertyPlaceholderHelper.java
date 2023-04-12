@@ -37,6 +37,7 @@ import org.springframework.lang.Nullable;
  * @author Rob Harrop
  * @since 3.0
  */
+// 属性 占位符 工具类
 public class PropertyPlaceholderHelper {
 
 	private static final Log logger = LogFactory.getLog(PropertyPlaceholderHelper.class);
@@ -56,9 +57,11 @@ public class PropertyPlaceholderHelper {
 
 	private final String simplePrefix;
 
+	// 值分隔符，意味着可以自定义
 	@Nullable
 	private final String valueSeparator;
 
+	// 是否忽略不能解析的 placeholder。不忽略则为严格模式
 	private final boolean ignoreUnresolvablePlaceholders;
 
 
@@ -215,6 +218,7 @@ public class PropertyPlaceholderHelper {
 	/**
 	 * Strategy interface used to resolve replacement values for placeholders contained in Strings.
 	 */
+	// 占位符解析器
 	@FunctionalInterface
 	public interface PlaceholderResolver {
 

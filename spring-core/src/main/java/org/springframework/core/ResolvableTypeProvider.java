@@ -31,6 +31,7 @@ import org.springframework.lang.Nullable;
  * @author Stephane Nicoll
  * @since 4.2
  */
+// 类型提供器
 public interface ResolvableTypeProvider {
 
 	/**

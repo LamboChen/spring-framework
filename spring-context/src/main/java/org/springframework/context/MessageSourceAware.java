@@ -40,6 +40,7 @@ public interface MessageSourceAware extends Aware {
 	 * Invoked before ApplicationContextAware's setApplicationContext.
 	 * @param messageSource message source to be used by this object
 	 */
+	// 实例化后初始化前，且 ApplicationContextAware 之前调用
 	void setMessageSource(MessageSource messageSource);
 
 }

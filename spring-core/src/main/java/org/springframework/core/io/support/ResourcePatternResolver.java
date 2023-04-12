@@ -51,6 +51,7 @@ import org.springframework.core.io.ResourceLoader;
  * @see org.springframework.context.ApplicationContext
  * @see org.springframework.context.ResourceLoaderAware
  */
+// 资源模式解析器
 public interface ResourcePatternResolver extends ResourceLoader {
 
 	/**

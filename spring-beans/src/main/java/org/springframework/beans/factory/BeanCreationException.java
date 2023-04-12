@@ -32,6 +32,7 @@ import org.springframework.lang.Nullable;
  * @author Juergen Hoeller
  */
 @SuppressWarnings("serial")
+// bean 创建异常，因为某种原因创建失败
 public class BeanCreationException extends FatalBeanException {
 
 	@Nullable

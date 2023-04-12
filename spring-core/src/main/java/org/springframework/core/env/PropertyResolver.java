@@ -27,6 +27,7 @@ import org.springframework.lang.Nullable;
  * @see Environment
  * @see PropertySourcesPropertyResolver
  */
+// 属性解析器
 public interface PropertyResolver {
 
 	/**

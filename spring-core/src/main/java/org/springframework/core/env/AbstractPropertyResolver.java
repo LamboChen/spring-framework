@@ -38,6 +38,7 @@ import org.springframework.util.SystemPropertyUtils;
  * @author Juergen Hoeller
  * @since 3.1
  */
+// 属性解析器的公共模版
 public abstract class AbstractPropertyResolver implements ConfigurablePropertyResolver {
 
 	protected final Log logger = LogFactory.getLog(getClass());
@@ -45,9 +46,11 @@ public abstract class AbstractPropertyResolver implements ConfigurablePropertyRe
 	@Nullable
 	private volatile ConfigurableConversionService conversionService;
 
+	// 非严格模式，忽略不能解析的 placeholder
 	@Nullable
 	private PropertyPlaceholderHelper nonStrictHelper;
 
+	// 严格模式
 	@Nullable
 	private PropertyPlaceholderHelper strictHelper;
 

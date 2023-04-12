@@ -37,6 +37,7 @@ import java.util.EventListener;
  * @see org.springframework.context.event.EventListener
  */
 @FunctionalInterface
+// 应用程序事件监听接口
 public interface ApplicationListener<E extends ApplicationEvent> extends EventListener {
 
 	/**

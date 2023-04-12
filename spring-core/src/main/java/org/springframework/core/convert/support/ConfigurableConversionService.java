@@ -34,6 +34,7 @@ import org.springframework.core.convert.converter.ConverterRegistry;
  * @see org.springframework.core.env.ConfigurableEnvironment
  * @see org.springframework.context.ConfigurableApplicationContext#getEnvironment()
  */
+// 有配置能力的 convert 服务
 public interface ConfigurableConversionService extends ConversionService, ConverterRegistry {
 
 }

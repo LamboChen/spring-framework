@@ -47,6 +47,7 @@ package org.springframework.context;
  * @see org.springframework.jms.listener.AbstractMessageListenerContainer
  * @see org.springframework.scheduling.quartz.SchedulerFactoryBean
  */
+// 生命周期顶层接口 start -> running -> stop
 public interface Lifecycle {
 
 	/**

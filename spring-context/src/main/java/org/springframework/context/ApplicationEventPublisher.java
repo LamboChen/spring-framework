@@ -31,6 +31,7 @@ package org.springframework.context;
  * @see org.springframework.context.event.EventPublicationInterceptor
  */
 @FunctionalInterface
+// 应用事件发布器,封装事件发布功能的接口
 public interface ApplicationEventPublisher {
 
 	/**

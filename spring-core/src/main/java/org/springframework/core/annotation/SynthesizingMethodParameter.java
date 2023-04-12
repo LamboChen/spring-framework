@@ -34,6 +34,7 @@ import org.springframework.core.MethodParameter;
  * @see AnnotationUtils#synthesizeAnnotation
  * @see AnnotationUtils#synthesizeAnnotationArray
  */
+// 综合的 method parameter
 public class SynthesizingMethodParameter extends MethodParameter {
 
 	/**

@@ -31,6 +31,7 @@ import org.springframework.lang.Nullable;
  * @since 07.07.2003
  * @see org.springframework.beans.factory.config.ConfigurableBeanFactory#setParentBeanFactory
  */
+// 分层的，有阶级的 bean factory
 public interface HierarchicalBeanFactory extends BeanFactory {
 
 	/**
@@ -48,6 +49,7 @@ public interface HierarchicalBeanFactory extends BeanFactory {
 	 * @return whether a bean with the given name is defined in the local factory
 	 * @see BeanFactory#containsBean
 	 */
+	// check bean 是否当前 factory 生产的，不包括父类上下文
 	boolean containsLocalBean(String name);
 
 }

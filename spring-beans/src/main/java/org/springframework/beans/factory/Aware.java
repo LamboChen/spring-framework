@@ -32,6 +32,7 @@ package org.springframework.beans.factory;
  * @author Juergen Hoeller
  * @since 3.1
  */
+// 有意识的，能觉察的。 包装
 public interface Aware {
 
 }

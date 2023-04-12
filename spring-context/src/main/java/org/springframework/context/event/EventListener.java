@@ -87,6 +87,7 @@ import org.springframework.core.annotation.AliasFor;
 @Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+// 事件监听注解，可实现 ApplicationEvent 事件监听
 public @interface EventListener {
 
 	/**

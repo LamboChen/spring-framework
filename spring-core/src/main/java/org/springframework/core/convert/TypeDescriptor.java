@@ -47,6 +47,7 @@ import org.springframework.util.ObjectUtils;
  * @since 3.0
  */
 @SuppressWarnings("serial")
+// 类型描述器
 public class TypeDescriptor implements Serializable {
 
 	private static final Annotation[] EMPTY_ANNOTATION_ARRAY = new Annotation[0];

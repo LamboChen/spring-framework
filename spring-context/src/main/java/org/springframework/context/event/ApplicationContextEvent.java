@@ -26,6 +26,7 @@ import org.springframework.context.ApplicationEvent;
  * @since 2.5
  */
 @SuppressWarnings("serial")
+// application context 相关事件，此事件可获得 ApplicationContext 对象
 public abstract class ApplicationContextEvent extends ApplicationEvent {
 
 	/**

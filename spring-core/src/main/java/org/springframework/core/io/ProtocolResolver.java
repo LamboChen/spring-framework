@@ -30,6 +30,7 @@ import org.springframework.lang.Nullable;
  * @see DefaultResourceLoader#addProtocolResolver
  */
 @FunctionalInterface
+// 协议解析器
 public interface ProtocolResolver {
 
 	/**

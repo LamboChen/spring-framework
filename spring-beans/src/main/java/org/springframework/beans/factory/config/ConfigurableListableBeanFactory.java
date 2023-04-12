@@ -39,6 +39,7 @@ import org.springframework.lang.Nullable;
  * @since 03.11.2003
  * @see org.springframework.context.support.AbstractApplicationContext#getBeanFactory()
  */
+// 复合 factory，可配置的，可列举的
 public interface ConfigurableListableBeanFactory
 		extends ListableBeanFactory, AutowireCapableBeanFactory, ConfigurableBeanFactory {
 
@@ -157,6 +158,7 @@ public interface ConfigurableListableBeanFactory
 	 * Call {@link #destroySingletons()} for full cleanup in this case.
 	 * @see #destroySingletons()
 	 */
+	// 预初始化单例对象
 	void preInstantiateSingletons() throws BeansException;
 
 }
