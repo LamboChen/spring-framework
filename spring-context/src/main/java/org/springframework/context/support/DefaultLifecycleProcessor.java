@@ -50,12 +50,14 @@ import org.springframework.util.Assert;
  * @author Juergen Hoeller
  * @since 3.0
  */
+// LifecycleProcessor 默认实现
 public class DefaultLifecycleProcessor implements LifecycleProcessor, BeanFactoryAware {
 
 	private final Log logger = LogFactory.getLog(getClass());
 
 	private volatile long timeoutPerShutdownPhase = 30000;
 
+	// 是否 running
 	private volatile boolean running;
 
 	@Nullable
@@ -117,12 +119,14 @@ public class DefaultLifecycleProcessor implements LifecycleProcessor, BeanFactor
 		this.running = false;
 	}
 
+	// 上下文刷新事件，和 start 的区别是，此处只调用设置 autoStartup = true 的组件
 	@Override
 	public void onRefresh() {
 		startBeans(true);
 		this.running = true;
 	}
 
+	// spring 上下文的 stop\close 事件都会调用 Lifecycle 的 stop
 	@Override
 	public void onClose() {
 		stopBeans();
@@ -166,6 +170,7 @@ public class DefaultLifecycleProcessor implements LifecycleProcessor, BeanFactor
 	 * @param lifecycleBeans a Map with bean name as key and Lifecycle instance as value
 	 * @param beanName the name of the bean to start
 	 */
+	// 真实 start
 	private void doStart(Map<String, ? extends Lifecycle> lifecycleBeans, String beanName, boolean autoStartupOnly) {
 		Lifecycle bean = lifecycleBeans.remove(beanName);
 		if (bean != null && bean != this) {
@@ -275,6 +280,7 @@ public class DefaultLifecycleProcessor implements LifecycleProcessor, BeanFactor
 	 * as well as all SmartLifecycle beans (even if they are marked as lazy-init).
 	 * @return the Map of applicable beans, with bean names as keys and bean instances as values
 	 */
+	// 获取所有 Lifecycle bean 对象
 	protected Map<String, Lifecycle> getLifecycleBeans() {
 		ConfigurableListableBeanFactory beanFactory = getBeanFactory();
 		Map<String, Lifecycle> beans = new LinkedHashMap<>();
@@ -348,6 +354,7 @@ public class DefaultLifecycleProcessor implements LifecycleProcessor, BeanFactor
 			}
 		}
 
+		// 触发Lifecycle start
 		public void start() {
 			if (this.members.isEmpty()) {
 				return;

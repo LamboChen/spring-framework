@@ -46,6 +46,7 @@ import org.springframework.lang.Nullable;
  * @author Juergen Hoeller
  * @since 4.0
  */
+// PostProcessor 注册委派
 final class PostProcessorRegistrationDelegate {
 
 	private PostProcessorRegistrationDelegate() {

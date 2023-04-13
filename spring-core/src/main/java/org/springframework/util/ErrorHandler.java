@@ -25,6 +25,7 @@ package org.springframework.util;
  * @author Mark Fisher
  * @since 3.0
  */
+// 错误处理器
 @FunctionalInterface
 public interface ErrorHandler {
 

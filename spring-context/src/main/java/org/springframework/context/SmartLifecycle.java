@@ -87,6 +87,7 @@ public interface SmartLifecycle extends Lifecycle, Phased {
 	 * @see LifecycleProcessor#onRefresh()
 	 * @see ConfigurableApplicationContext#refresh()
 	 */
+	// 是否由 Spring 容器刷新自动 startup
 	default boolean isAutoStartup() {
 		return true;
 	}
@@ -108,6 +109,7 @@ public interface SmartLifecycle extends Lifecycle, Phased {
 	 * @see #stop()
 	 * @see #getPhase()
 	 */
+	// 可注入 callback 的 stop 方法，在 stop 完成后调用 callback
 	default void stop(Runnable callback) {
 		stop();
 		callback.run();

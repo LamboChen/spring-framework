@@ -48,6 +48,7 @@ import org.springframework.util.ErrorHandler;
  */
 public class SimpleApplicationEventMulticaster extends AbstractApplicationEventMulticaster {
 
+	// 任务执行器，异步线程池
 	@Nullable
 	private Executor taskExecutor;
 
@@ -129,13 +130,17 @@ public class SimpleApplicationEventMulticaster extends AbstractApplicationEventM
 
 	@Override
 	public void multicastEvent(final ApplicationEvent event, @Nullable ResolvableType eventType) {
+		// 看起来并没有 check 事件类型是否一致？
 		ResolvableType type = (eventType != null ? eventType : resolveDefaultEventType(event));
+		// 获取任务执行器，即线程池
 		Executor executor = getTaskExecutor();
 		for (ApplicationListener<?> listener : getApplicationListeners(event, type)) {
 			if (executor != null) {
+				// 提交异步任务
 				executor.execute(() -> invokeListener(listener, event));
 			}
 			else {
+				// 同步执行
 				invokeListener(listener, event);
 			}
 		}
@@ -169,19 +174,24 @@ public class SimpleApplicationEventMulticaster extends AbstractApplicationEventM
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	private void doInvokeListener(ApplicationListener listener, ApplicationEvent event) {
 		try {
+			// 直接调用事件消费方法
 			listener.onApplicationEvent(event);
 		}
 		catch (ClassCastException ex) {
+			// 类型不匹配
 			String msg = ex.getMessage();
+			// 没有错误信息，或者 msg==event.classname
 			if (msg == null || matchesClassCastMessage(msg, event.getClass())) {
 				// Possibly a lambda-defined listener which we could not resolve the generic event type for
 				// -> let's suppress the exception and just log a debug message.
+				// 可能是一个 lambda 定义的侦听器，我们无法为其解析通用事件类型。此处只打了日志
 				Log logger = LogFactory.getLog(getClass());
 				if (logger.isTraceEnabled()) {
 					logger.trace("Non-matching event type for listener: " + listener, ex);
 				}
 			}
 			else {
+				// 否则抛出异常
 				throw ex;
 			}
 		}

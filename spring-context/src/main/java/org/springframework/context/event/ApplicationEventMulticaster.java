@@ -74,6 +74,7 @@ public interface ApplicationEventMulticaster {
 	 * if possible as it provides better support for generics-based events.
 	 * @param event the event to multicast
 	 */
+	// 广播事件
 	void multicastEvent(ApplicationEvent event);
 
 	/**
@@ -84,6 +85,7 @@ public interface ApplicationEventMulticaster {
 	 * @param eventType the type of event (can be {@code null})
 	 * @since 4.2
 	 */
+	// 按照事件类型广播
 	void multicastEvent(ApplicationEvent event, @Nullable ResolvableType eventType);
 
 }

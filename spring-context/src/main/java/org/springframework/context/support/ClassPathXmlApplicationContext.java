@@ -49,8 +49,10 @@ import org.springframework.util.Assert;
  * @see #getResourceByPath
  * @see GenericApplicationContext
  */
+// 用于加载 ClassPath 下的 XML 配置文件的 application context
 public class ClassPathXmlApplicationContext extends AbstractXmlApplicationContext {
 
+	// 资源文件列表
 	@Nullable
 	private Resource[] configResources;
 

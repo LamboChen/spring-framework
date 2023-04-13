@@ -50,6 +50,7 @@ import org.springframework.util.ObjectUtils;
  * @see java.util.List#sort(java.util.Comparator)
  * @see java.util.Arrays#sort(Object[], java.util.Comparator)
  */
+// 排序器
 public class OrderComparator implements Comparator<Object> {
 
 	/**

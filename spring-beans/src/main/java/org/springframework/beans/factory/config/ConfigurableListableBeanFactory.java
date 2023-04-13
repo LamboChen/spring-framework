@@ -61,6 +61,7 @@ public interface ConfigurableListableBeanFactory
 	 * @see org.springframework.beans.factory.BeanFactoryAware
 	 * @see org.springframework.context.ApplicationContextAware
 	 */
+	// 忽略依赖的接口，在自动装配时
 	void ignoreDependencyInterface(Class<?> ifc);
 
 	/**

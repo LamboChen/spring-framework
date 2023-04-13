@@ -62,19 +62,24 @@ import org.springframework.lang.Nullable;
  * @see FileSystemXmlApplicationContext
  * @see org.springframework.context.annotation.AnnotationConfigApplicationContext
  */
+// 具有 refresh 能力的 application context
 public abstract class AbstractRefreshableApplicationContext extends AbstractApplicationContext {
 
+	// 是否允许 BeanDefinition 被覆盖
 	@Nullable
 	private Boolean allowBeanDefinitionOverriding;
 
+	// 是否允许循环引用
 	@Nullable
 	private Boolean allowCircularReferences;
 
 	/** Bean factory for this context. */
+	// bean factory 实例
 	@Nullable
 	private DefaultListableBeanFactory beanFactory;
 
 	/** Synchronization monitor for the internal BeanFactory. */
+	// bean factory 监视器锁
 	private final Object beanFactoryMonitor = new Object();
 
 

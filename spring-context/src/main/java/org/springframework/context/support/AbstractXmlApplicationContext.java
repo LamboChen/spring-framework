@@ -43,6 +43,7 @@ import org.springframework.lang.Nullable;
  * @see #getConfigLocations
  * @see org.springframework.beans.factory.xml.XmlBeanDefinitionReader
  */
+// xml 方式抽象模版
 public abstract class AbstractXmlApplicationContext extends AbstractRefreshableConfigApplicationContext {
 
 	private boolean validating = true;

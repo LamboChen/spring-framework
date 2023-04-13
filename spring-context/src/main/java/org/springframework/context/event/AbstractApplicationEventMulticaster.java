@@ -170,6 +170,7 @@ public abstract class AbstractApplicationEventMulticaster
 	 * @return a Collection of ApplicationListeners
 	 * @see org.springframework.context.ApplicationListener
 	 */
+	// 根据类型获取所有 ApplicationListener
 	protected Collection<ApplicationListener<?>> getApplicationListeners(
 			ApplicationEvent event, ResolvableType eventType) {
 
@@ -415,10 +416,13 @@ public abstract class AbstractApplicationEventMulticaster
 	 * allowing for efficient retrieval of pre-filtered listeners.
 	 * <p>An instance of this helper gets cached per event type and source type.
 	 */
+	// Listener 猎犬？ 用于嗅探 Listener
 	private class ListenerRetriever {
 
+		// 已经搜集的 ApplicationListener
 		public final Set<ApplicationListener<?>> applicationListeners = new LinkedHashSet<>();
 
+		// 所有的 ApplicationListener bean name
 		public final Set<String> applicationListenerBeans = new LinkedHashSet<>();
 
 		private final boolean preFiltered;
@@ -427,6 +431,7 @@ public abstract class AbstractApplicationEventMulticaster
 			this.preFiltered = preFiltered;
 		}
 
+		// 搜集所有的 ApplicationListener
 		public Collection<ApplicationListener<?>> getApplicationListeners() {
 			List<ApplicationListener<?>> allListeners = new ArrayList<>(
 					this.applicationListeners.size() + this.applicationListenerBeans.size());
@@ -446,6 +451,7 @@ public abstract class AbstractApplicationEventMulticaster
 					}
 				}
 			}
+			// 未进行前置过滤 且有新搜集到的 ApplicationListener 时，进行排序
 			if (!this.preFiltered || !this.applicationListenerBeans.isEmpty()) {
 				AnnotationAwareOrderComparator.sort(allListeners);
 			}

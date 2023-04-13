@@ -43,6 +43,7 @@ import org.springframework.util.ObjectUtils;
  * @author Juergen Hoeller
  * @since 4.3.4
  */
+// application listener 探测器
 class ApplicationListenerDetector implements DestructionAwareBeanPostProcessor, MergedBeanDefinitionPostProcessor {
 
 	private static final Log logger = LogFactory.getLog(ApplicationListenerDetector.class);

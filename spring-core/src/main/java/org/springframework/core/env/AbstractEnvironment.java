@@ -52,6 +52,7 @@ import org.springframework.util.StringUtils;
  * @see ConfigurableEnvironment
  * @see StandardEnvironment
  */
+// environment 通用模版
 public abstract class AbstractEnvironment implements ConfigurableEnvironment {
 
 	/**
@@ -64,6 +65,7 @@ public abstract class AbstractEnvironment implements ConfigurableEnvironment {
 	 * with strict SecurityManager settings and AccessControlExceptions warnings.
 	 * @see #suppressGetenvAccess()
 	 */
+	// 是否忽略获取系统变量 env
 	public static final String IGNORE_GETENV_PROPERTY_NAME = "spring.getenv.ignore";
 
 	/**
@@ -98,11 +100,13 @@ public abstract class AbstractEnvironment implements ConfigurableEnvironment {
 	 * @see AbstractEnvironment#DEFAULT_PROFILES_PROPERTY_NAME
 	 * @see AbstractEnvironment#ACTIVE_PROFILES_PROPERTY_NAME
 	 */
+	// 预设的默认 profile 名称
 	protected static final String RESERVED_DEFAULT_PROFILE_NAME = "default";
 
 
 	protected final Log logger = LogFactory.getLog(getClass());
 
+	// 活跃的 profile
 	private final Set<String> activeProfiles = new LinkedHashSet<>();
 
 	private final Set<String> defaultProfiles = new LinkedHashSet<>(getReservedDefaultProfiles());
@@ -200,6 +204,7 @@ public abstract class AbstractEnvironment implements ConfigurableEnvironment {
 	 * @see PropertySourcesPropertyResolver
 	 * @see org.springframework.context.ApplicationContextInitializer
 	 */
+	// 定制 PropertySource
 	protected void customizePropertySources(MutablePropertySources propertySources) {
 	}
 

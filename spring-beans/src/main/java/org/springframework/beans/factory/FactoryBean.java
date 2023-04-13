@@ -57,6 +57,7 @@ import org.springframework.lang.Nullable;
  * @see org.springframework.aop.framework.ProxyFactoryBean
  * @see org.springframework.jndi.JndiObjectFactoryBean
  */
+// 工厂对象
 public interface FactoryBean<T> {
 
 	/**

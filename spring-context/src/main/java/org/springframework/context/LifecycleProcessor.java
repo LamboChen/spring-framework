@@ -23,16 +23,19 @@ package org.springframework.context;
  * @author Juergen Hoeller
  * @since 3.0
  */
+// lifecycle 处理器
 public interface LifecycleProcessor extends Lifecycle {
 
 	/**
 	 * Notification of context refresh, e.g. for auto-starting components.
 	 */
+	// 通知 Spring context 刷新事件
 	void onRefresh();
 
 	/**
 	 * Notification of context close phase, e.g. for auto-stopping components.
 	 */
+	// Spring context 关闭事件
 	void onClose();
 
 }
