@@ -37,6 +37,7 @@ import org.springframework.lang.Nullable;
  * @since 1.1
  * @see org.springframework.core.io.Resource
  */
+// BeanDefinition 读取接口
 public interface BeanDefinitionReader {
 
 	/**

@@ -45,6 +45,7 @@ import org.springframework.core.AliasRegistry;
  * @see org.springframework.beans.factory.xml.XmlBeanDefinitionReader
  * @see PropertiesBeanDefinitionReader
  */
+// BeanDefinition 注册接口
 public interface BeanDefinitionRegistry extends AliasRegistry {
 
 	/**
@@ -103,6 +104,7 @@ public interface BeanDefinitionRegistry extends AliasRegistry {
 	 * @param beanName the name to check
 	 * @return whether the given bean name is already in use
 	 */
+	// beanName 是否被使用
 	boolean isBeanNameInUse(String beanName);
 
 }

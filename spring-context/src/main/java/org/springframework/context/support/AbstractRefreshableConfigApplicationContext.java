@@ -36,6 +36,7 @@ import org.springframework.util.StringUtils;
  * @see #setConfigLocations
  * @see #getDefaultConfigLocations
  */
+// config 实现
 public abstract class AbstractRefreshableConfigApplicationContext extends AbstractRefreshableApplicationContext
 		implements BeanNameAware, InitializingBean {
 
@@ -138,6 +139,7 @@ public abstract class AbstractRefreshableConfigApplicationContext extends Abstra
 	 */
 	@Override
 	public void setBeanName(String name) {
+		// 没 setId 时才注入 displayName，并且用 beanName 作为 ID
 		if (!this.setIdCalled) {
 			super.setId(name);
 			setDisplayName("ApplicationContext '" + name + "'");

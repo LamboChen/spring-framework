@@ -40,6 +40,8 @@ package org.springframework.core;
  * @see org.springframework.core.annotation.Order
  * @see org.springframework.core.annotation.AnnotationAwareOrderComparator
  */
+// 排序接口。
+// 排序实现方式：1 实现 Ordered 接口。2 标注 @Order 注解
 public interface Ordered {
 
 	/**

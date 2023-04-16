@@ -56,6 +56,7 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	 * Custom scopes can be added via {@code registerScope}.
 	 * @see #registerScope
 	 */
+	// 单例模式
 	String SCOPE_SINGLETON = "singleton";
 
 	/**
@@ -63,6 +64,7 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	 * Custom scopes can be added via {@code registerScope}.
 	 * @see #registerScope
 	 */
+	// 原型模式，每次都创建对象
 	String SCOPE_PROTOTYPE = "prototype";
 
 

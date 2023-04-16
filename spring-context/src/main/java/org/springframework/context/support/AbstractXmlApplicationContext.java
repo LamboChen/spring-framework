@@ -67,6 +67,7 @@ public abstract class AbstractXmlApplicationContext extends AbstractRefreshableC
 	/**
 	 * Set whether to use XML validation. Default is {@code true}.
 	 */
+	// 设置是否使用 XML 验证。默认值为 {@code true}。
 	public void setValidating(boolean validating) {
 		this.validating = validating;
 	}
@@ -78,6 +79,7 @@ public abstract class AbstractXmlApplicationContext extends AbstractRefreshableC
 	 * @see #initBeanDefinitionReader
 	 * @see #loadBeanDefinitions
 	 */
+	// load
 	@Override
 	protected void loadBeanDefinitions(DefaultListableBeanFactory beanFactory) throws BeansException, IOException {
 		// Create a new XmlBeanDefinitionReader for the given BeanFactory.

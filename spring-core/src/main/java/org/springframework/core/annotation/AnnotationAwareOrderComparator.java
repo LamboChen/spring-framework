@@ -44,7 +44,7 @@ import org.springframework.lang.Nullable;
  * @see org.springframework.core.annotation.Order
  * @see javax.annotation.Priority
  */
-// @Order 排序器
+// @Order 或 Ordered 排序器
 public class AnnotationAwareOrderComparator extends OrderComparator {
 
 	/**

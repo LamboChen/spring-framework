@@ -63,6 +63,7 @@ import org.springframework.core.Ordered;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.TYPE, ElementType.METHOD, ElementType.FIELD})
 @Documented
+// 排序注解
 public @interface Order {
 
 	/**
@@ -70,6 +71,7 @@ public @interface Order {
 	 * <p>Default is {@link Ordered#LOWEST_PRECEDENCE}.
 	 * @see Ordered#getOrder()
 	 */
+	// 采用的升序排序，值越大优先级越小
 	int value() default Ordered.LOWEST_PRECEDENCE;
 
 }
