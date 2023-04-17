@@ -34,13 +34,15 @@ import org.springframework.util.StringUtils;
  * @author Juergen Hoeller
  * @since 2.0
  */
+// 属性访问器支持类，即抽象模版类
 @SuppressWarnings("serial")
 public abstract class AttributeAccessorSupport implements AttributeAccessor, Serializable {
 
 	/** Map with String keys and Object values. */
+	// 使用字符串键和对象值进行映射
 	private final Map<String, Object> attributes = new LinkedHashMap<>();
 
-
+	// 设置属性，如果 value == null 则进行删除
 	@Override
 	public void setAttribute(String name, @Nullable Object value) {
 		Assert.notNull(name, "Name must not be null");

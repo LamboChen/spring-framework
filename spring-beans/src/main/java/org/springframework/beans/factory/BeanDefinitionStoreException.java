@@ -27,6 +27,7 @@ import org.springframework.lang.Nullable;
  * @author Juergen Hoeller
  * @author Rob Harrop
  */
+// BeanDefinition 存储异常
 @SuppressWarnings("serial")
 public class BeanDefinitionStoreException extends FatalBeanException {
 

@@ -29,6 +29,7 @@ package org.springframework.core.type;
  * @see AnnotationMetadata#getAnnotatedMethods
  * @see AnnotatedTypeMetadata
  */
+// 方法元数据
 public interface MethodMetadata extends AnnotatedTypeMetadata {
 
 	/**

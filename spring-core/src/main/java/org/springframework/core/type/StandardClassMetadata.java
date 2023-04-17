@@ -30,6 +30,7 @@ import org.springframework.util.StringUtils;
  * @author Juergen Hoeller
  * @since 2.5
  */
+// ClassMetadata 的标准实现
 public class StandardClassMetadata implements ClassMetadata {
 
 	private final Class<?> introspectedClass;

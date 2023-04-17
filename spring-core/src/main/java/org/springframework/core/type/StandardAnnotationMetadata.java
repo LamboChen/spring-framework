@@ -45,6 +45,7 @@ import org.springframework.util.ReflectionUtils;
  * @author Sam Brannen
  * @since 2.5
  */
+// 注解元信息的标准实现
 public class StandardAnnotationMetadata extends StandardClassMetadata implements AnnotationMetadata {
 
 	private final MergedAnnotations mergedAnnotations;

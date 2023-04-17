@@ -43,6 +43,7 @@ import org.springframework.util.MultiValueMap;
  * @see AnnotationMetadata
  * @see MethodMetadata
  */
+// 注解类型的元数据
 public interface AnnotatedTypeMetadata {
 
 	/**
@@ -51,6 +52,7 @@ public interface AnnotatedTypeMetadata {
 	 * @return merged annotations based on the direct annotations
 	 * @since 5.2
 	 */
+	// 返回直接注解
 	MergedAnnotations getAnnotations();
 
 	/**
@@ -62,6 +64,7 @@ public interface AnnotatedTypeMetadata {
 	 * type to look for
 	 * @return whether a matching annotation is defined
 	 */
+	// 是否被注解了
 	default boolean isAnnotated(String annotationName) {
 		return getAnnotations().isPresent(annotationName);
 	}
@@ -76,6 +79,7 @@ public interface AnnotatedTypeMetadata {
 	 * and the defined attribute value as Map value. This return value will be
 	 * {@code null} if no matching annotation is defined.
 	 */
+	// 获取注解属性
 	@Nullable
 	default Map<String, Object> getAnnotationAttributes(String annotationName) {
 		return getAnnotationAttributes(annotationName, false);

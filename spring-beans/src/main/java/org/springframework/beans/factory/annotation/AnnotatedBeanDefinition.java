@@ -31,6 +31,7 @@ import org.springframework.lang.Nullable;
  * @see AnnotatedGenericBeanDefinition
  * @see org.springframework.core.type.AnnotationMetadata
  */
+// 注解的 BeanDefinition
 public interface AnnotatedBeanDefinition extends BeanDefinition {
 
 	/**
