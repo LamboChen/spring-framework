@@ -46,12 +46,14 @@ import org.springframework.lang.Nullable;
  * @see org.springframework.jdbc.core.StatementCreatorUtils#IGNORE_GETPARAMETERTYPE_PROPERTY_NAME
  * @see org.springframework.test.context.cache.ContextCache#MAX_CONTEXT_CACHE_SIZE_PROPERTY_NAME
  */
+// 获取classpath下的 spring.properties 文件
 public final class SpringProperties {
 
 	private static final String PROPERTIES_RESOURCE_LOCATION = "spring.properties";
 
 	private static final Log logger = LogFactory.getLog(SpringProperties.class);
 
+	// 本地属性存储
 	private static final Properties localProperties = new Properties();
 
 
@@ -89,6 +91,7 @@ public final class SpringProperties {
 	 * @param key the property key
 	 * @param value the associated property value, or {@code null} to reset it
 	 */
+	// 可支持修改属性
 	public static void setProperty(String key, @Nullable String value) {
 		if (value != null) {
 			localProperties.setProperty(key, value);
@@ -104,6 +107,7 @@ public final class SpringProperties {
 	 * @param key the property key
 	 * @return the associated property value, or {@code null} if none found
 	 */
+	// 获取指定 key name 的属性
 	@Nullable
 	public static String getProperty(String key) {
 		String value = localProperties.getProperty(key);
@@ -125,6 +129,7 @@ public final class SpringProperties {
 	 * entry in the {@code spring.properties} file (if any).
 	 * @param key the property key
 	 */
+	// 设置 boolean 类型属性
 	public static void setFlag(String key) {
 		localProperties.put(key, Boolean.TRUE.toString());
 	}
@@ -135,6 +140,7 @@ public final class SpringProperties {
 	 * @return {@code true} if the property is set to "true",
 	 * {@code} false otherwise
 	 */
+	// 获取 boolean 类型的 Spring properties
 	public static boolean getFlag(String key) {
 		return Boolean.parseBoolean(getProperty(key));
 	}

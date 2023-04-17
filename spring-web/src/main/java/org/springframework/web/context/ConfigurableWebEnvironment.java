@@ -32,6 +32,7 @@ import org.springframework.lang.Nullable;
  * @since 3.1.2
  * @see ConfigurableWebApplicationContext#getEnvironment()
  */
+// 可配置的 WebEnvironment
 public interface ConfigurableWebEnvironment extends ConfigurableEnvironment {
 
 	/**
@@ -44,6 +45,7 @@ public interface ConfigurableWebEnvironment extends ConfigurableEnvironment {
 	 * @see org.springframework.web.context.support.WebApplicationContextUtils#initServletPropertySources(
 	 * org.springframework.core.env.MutablePropertySources, ServletContext, ServletConfig)
 	 */
+	// 初始化 PropertySource
 	void initPropertySources(@Nullable ServletContext servletContext, @Nullable ServletConfig servletConfig);
 
 }

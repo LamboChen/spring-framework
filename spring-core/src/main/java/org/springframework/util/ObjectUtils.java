@@ -186,6 +186,7 @@ public abstract class ObjectUtils {
 	 * @param element the element to check for
 	 * @return whether the element has been found in the given array
 	 */
+	// 判断 element 是否在 array 中
 	public static boolean containsElement(@Nullable Object[] array, Object element) {
 		if (array == null) {
 			return false;
@@ -316,6 +317,7 @@ public abstract class ObjectUtils {
 	 * @see Object#equals(Object)
 	 * @see java.util.Arrays#equals
 	 */
+	// 支持 null 判等，预防性判等，不会抛 NPE
 	public static boolean nullSafeEquals(@Nullable Object o1, @Nullable Object o2) {
 		if (o1 == o2) {
 			return true;
@@ -323,9 +325,11 @@ public abstract class ObjectUtils {
 		if (o1 == null || o2 == null) {
 			return false;
 		}
+		// 两对象相等，直接响应
 		if (o1.equals(o2)) {
 			return true;
 		}
+		// 不相等时，如果两对象均为数组，则进行数组比较
 		if (o1.getClass().isArray() && o2.getClass().isArray()) {
 			return arrayEquals(o1, o2);
 		}
@@ -342,6 +346,7 @@ public abstract class ObjectUtils {
 	 * @see java.util.Arrays#equals
 	 */
 	private static boolean arrayEquals(Object o1, Object o2) {
+		// 识别类型，进行强制类型比较
 		if (o1 instanceof Object[] && o2 instanceof Object[]) {
 			return Arrays.equals((Object[]) o1, (Object[]) o2);
 		}

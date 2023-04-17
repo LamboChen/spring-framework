@@ -38,6 +38,7 @@ import org.springframework.util.StringValueResolver;
  * @author Juergen Hoeller
  * @since 2.5.2
  */
+// 简单的 Alias 注册器
 public class SimpleAliasRegistry implements AliasRegistry {
 
 	/** Logger available to subclasses. */
@@ -211,6 +212,7 @@ public class SimpleAliasRegistry implements AliasRegistry {
 	 * @param name the user-specified name
 	 * @return the transformed name
 	 */
+	// 规范名称，即将别名转换为真实名称
 	public String canonicalName(String name) {
 		String canonicalName = name;
 		// Handle aliasing...

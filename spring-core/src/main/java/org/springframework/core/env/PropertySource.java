@@ -64,6 +64,7 @@ public abstract class PropertySource<T> {
 
 	protected final String name;
 
+	// 真实源
 	protected final T source;
 
 
@@ -185,6 +186,7 @@ public abstract class PropertySource<T> {
 	 * are called.
 	 * @param name the name of the comparison {@code PropertySource} to be created and returned.
 	 */
+	// 根据 name 构造 PropertySource，当前对象没有任何能力
 	public static PropertySource<?> named(String name) {
 		return new ComparisonPropertySource(name);
 	}
@@ -202,6 +204,7 @@ public abstract class PropertySource<T> {
 	 * @see org.springframework.web.context.support.StandardServletEnvironment
 	 * @see org.springframework.web.context.support.ServletContextPropertySource
 	 */
+	// 存根 PropertySource，仅用于临时存储
 	public static class StubPropertySource extends PropertySource<Object> {
 
 		public StubPropertySource(String name) {
@@ -225,6 +228,7 @@ public abstract class PropertySource<T> {
 	 *
 	 * @see PropertySource#named(String)
 	 */
+	// 比较 PropertySource
 	static class ComparisonPropertySource extends StubPropertySource {
 
 		private static final String USAGE_ERROR =

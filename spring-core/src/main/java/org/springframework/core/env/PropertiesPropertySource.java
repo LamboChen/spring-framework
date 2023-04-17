@@ -33,6 +33,7 @@ import java.util.Properties;
  * @author Juergen Hoeller
  * @since 3.1
  */
+// Properties 属性 类型的 PropertySource
 public class PropertiesPropertySource extends MapPropertySource {
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
@@ -47,6 +48,7 @@ public class PropertiesPropertySource extends MapPropertySource {
 
 	@Override
 	public String[] getPropertyNames() {
+		// 对 source 加锁，保证同步拿到当前值
 		synchronized (this.source) {
 			return super.getPropertyNames();
 		}

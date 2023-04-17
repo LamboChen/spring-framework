@@ -30,6 +30,7 @@ import org.springframework.beans.factory.Aware;
  * @since 12.03.2004
  * @see ServletConfigAware
  */
+// ServletContext Aware 接口，用于注入 ServletContext
 public interface ServletContextAware extends Aware {
 
 	/**
@@ -42,6 +43,7 @@ public interface ServletContextAware extends Aware {
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet
 	 * @see org.springframework.context.ApplicationContextAware#setApplicationContext
 	 */
+	// bean 属性注入之后，但在 InitializingBean's {@code afterPropertiesSet}、init-method 之前调用
 	void setServletContext(ServletContext servletContext);
 
 }

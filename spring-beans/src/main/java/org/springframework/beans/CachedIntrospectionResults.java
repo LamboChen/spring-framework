@@ -71,6 +71,7 @@ import org.springframework.util.StringUtils;
  * @see #clearClassLoader(ClassLoader)
  * @see #forClass(Class)
  */
+// 缓存 JavaBeans {@link java.beans.PropertyDescriptor} 的内部类 Java 类的信息。不适合应用程序代码直接使用。
 public final class CachedIntrospectionResults {
 
 	/**
@@ -92,7 +93,7 @@ public final class CachedIntrospectionResults {
 	 */
 	public static final String IGNORE_BEANINFO_PROPERTY_NAME = "spring.beaninfo.ignore";
 
-
+	// 是否应该忽略 BeanInfo Classes ?
 	private static final boolean shouldIntrospectorIgnoreBeaninfoClasses =
 			SpringProperties.getFlag(IGNORE_BEANINFO_PROPERTY_NAME);
 
@@ -136,6 +137,7 @@ public final class CachedIntrospectionResults {
 	 * be paired with a {@link #clearClassLoader} call at application shutdown.
 	 * @param classLoader the ClassLoader to accept
 	 */
+	// 允许指定 ClassLoader
 	public static void acceptClassLoader(@Nullable ClassLoader classLoader) {
 		if (classLoader != null) {
 			acceptedClassLoaders.add(classLoader);

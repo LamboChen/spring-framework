@@ -47,9 +47,10 @@ public class JndiLocatorDelegate extends JndiLocatorSupport {
 	 * @see #isDefaultJndiEnvironmentAvailable()
 	 * @see JndiPropertySource
 	 */
+	// 忽略 JNDI 属性名
 	public static final String IGNORE_JNDI_PROPERTY_NAME = "spring.jndi.ignore";
 
-
+	// 是否忽略默认的 JNDI 环境变量
 	private static final boolean shouldIgnoreDefaultJndiEnvironment =
 			SpringProperties.getFlag(IGNORE_JNDI_PROPERTY_NAME);
 

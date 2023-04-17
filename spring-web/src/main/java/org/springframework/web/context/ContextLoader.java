@@ -83,6 +83,7 @@ import org.springframework.util.StringUtils;
  * @see ConfigurableWebApplicationContext
  * @see org.springframework.web.context.support.XmlWebApplicationContext
  */
+// 上下文加载器
 public class ContextLoader {
 
 	/**

@@ -42,6 +42,7 @@ import org.springframework.util.ObjectUtils;
  * @since 3.1
  * @param <T> the source type
  */
+// 可枚举的 PropertySource
 public abstract class EnumerablePropertySource<T> extends PropertySource<T> {
 
 	public EnumerablePropertySource(String name, T source) {
@@ -68,6 +69,7 @@ public abstract class EnumerablePropertySource<T> extends PropertySource<T> {
 	 * Return the names of all properties contained by the
 	 * {@linkplain #getSource() source} object (never {@code null}).
 	 */
+	// 获取属性名称数组
 	public abstract String[] getPropertyNames();
 
 }

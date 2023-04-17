@@ -176,10 +176,12 @@ public abstract class ClassUtils {
 	 * @see Thread#getContextClassLoader()
 	 * @see ClassLoader#getSystemClassLoader()
 	 */
+	// 获得默认的 ClassLoader
 	@Nullable
 	public static ClassLoader getDefaultClassLoader() {
 		ClassLoader cl = null;
 		try {
+			// 优先用当前线程的
 			cl = Thread.currentThread().getContextClassLoader();
 		}
 		catch (Throwable ex) {
@@ -187,14 +189,17 @@ public abstract class ClassUtils {
 		}
 		if (cl == null) {
 			// No thread context class loader -> use class loader of this class.
+			// 没有线程上下文时，用当前类的
 			cl = ClassUtils.class.getClassLoader();
 			if (cl == null) {
 				// getClassLoader() returning null indicates the bootstrap ClassLoader
 				try {
+					// 否则用系统的
 					cl = ClassLoader.getSystemClassLoader();
 				}
 				catch (Throwable ex) {
 					// Cannot access system ClassLoader - oh well, maybe the caller can live with null...
+					// 而后，则直接返回 null
 				}
 			}
 		}

@@ -323,6 +323,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * <p>If none specified, a default environment will be initialized via
 	 * {@link #createEnvironment()}.
 	 */
+	// 获取并创建 Environment
 	@Override
 	public ConfigurableEnvironment getEnvironment() {
 		if (this.environment == null) {
@@ -336,6 +337,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * <p>Subclasses may override this method in order to supply
 	 * a custom {@link ConfigurableEnvironment} implementation.
 	 */
+	// 直接创建 StandardEnvironment
 	protected ConfigurableEnvironment createEnvironment() {
 		return new StandardEnvironment();
 	}
@@ -594,6 +596,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * Prepare this context for refreshing, setting its startup date and
 	 * active flag as well as performing any initialization of property sources.
 	 */
+	// 准备 refresh，用于前置操作
 	protected void prepareRefresh() {
 		// Switch to active.
 		this.startupDate = System.currentTimeMillis();
@@ -637,6 +640,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * @see org.springframework.core.env.PropertySource.StubPropertySource
 	 * @see org.springframework.web.context.support.WebApplicationContextUtils#initServletPropertySources
 	 */
+	// 将任何 StubPropertySource 替换为实际实例。
 	protected void initPropertySources() {
 		// For subclasses: do nothing by default.
 	}
@@ -1085,6 +1089,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 		// For subclasses: do nothing by default.
 	}
 
+	// 当前 context 是否是活跃状态
 	@Override
 	public boolean isActive() {
 		return this.active.get();
@@ -1099,6 +1104,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	 * of this context overall. May be overridden for more specific checks, or for a
 	 * no-op if {@link #getBeanFactory()} itself throws an exception in such a case.
 	 */
+	// 断言 BeanFactory 是否 active
 	protected void assertBeanFactoryActive() {
 		if (!this.active.get()) {
 			if (this.closed.get()) {

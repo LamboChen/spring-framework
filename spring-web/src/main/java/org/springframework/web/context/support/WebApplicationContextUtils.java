@@ -95,6 +95,7 @@ public abstract class WebApplicationContextUtils {
 	 * @return the root WebApplicationContext for this web app, or {@code null} if none
 	 * @see org.springframework.web.context.WebApplicationContext#ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE
 	 */
+	// 查找此 Web 应用的根 {@code WebApplicationContext}，通常通过 {@link org.springframework.web.context.ContextLoaderListener} 加载。
 	@Nullable
 	public static WebApplicationContext getWebApplicationContext(ServletContext sc) {
 		return getWebApplicationContext(sc, WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE);
@@ -106,6 +107,7 @@ public abstract class WebApplicationContextUtils {
 	 * @param attrName the name of the ServletContext attribute to look for
 	 * @return the desired WebApplicationContext for this web app, or {@code null} if none
 	 */
+	// 类型 check，加载失败时则直接 throw exception
 	@Nullable
 	public static WebApplicationContext getWebApplicationContext(ServletContext sc, String attrName) {
 		Assert.notNull(sc, "ServletContext must not be null");
@@ -290,6 +292,7 @@ public abstract class WebApplicationContextUtils {
 	 * @see org.springframework.core.env.PropertySource.StubPropertySource
 	 * @see org.springframework.core.env.ConfigurableEnvironment#getPropertySources()
 	 */
+	// 初始化 ServletPropertySource
 	public static void initServletPropertySources(MutablePropertySources sources,
 			@Nullable ServletContext servletContext, @Nullable ServletConfig servletConfig) {
 
