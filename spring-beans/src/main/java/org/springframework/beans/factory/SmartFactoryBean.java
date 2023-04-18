@@ -39,6 +39,7 @@ package org.springframework.beans.factory;
  * @see #isPrototype()
  * @see #isSingleton()
  */
+// 智能的 FactoryBean
 public interface SmartFactoryBean<T> extends FactoryBean<T> {
 
 	/**
@@ -56,6 +57,7 @@ public interface SmartFactoryBean<T> extends FactoryBean<T> {
 	 * @see #getObject()
 	 * @see #isSingleton()
 	 */
+	// 是否原型模式，默认false
 	default boolean isPrototype() {
 		return false;
 	}
@@ -75,6 +77,7 @@ public interface SmartFactoryBean<T> extends FactoryBean<T> {
 	 * @return whether eager initialization applies
 	 * @see org.springframework.beans.factory.config.ConfigurableListableBeanFactory#preInstantiateSingletons()
 	 */
+	// 饿汉氏初始化，默认 false
 	default boolean isEagerInit() {
 		return false;
 	}

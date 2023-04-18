@@ -41,6 +41,7 @@ import org.springframework.util.StringUtils;
  * @author Rob Harrop
  * @since 13 May 2001
  */
+// 可变的属性值
 @SuppressWarnings("serial")
 public class MutablePropertyValues implements PropertyValues, Serializable {
 

@@ -70,24 +70,28 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	 * Constant that indicates no external autowiring at all.
 	 * @see #setAutowireMode
 	 */
+	// 表示根本没有外部自动装配
 	public static final int AUTOWIRE_NO = AutowireCapableBeanFactory.AUTOWIRE_NO;
 
 	/**
 	 * Constant that indicates autowiring bean properties by name.
 	 * @see #setAutowireMode
 	 */
+	// 按名称指示自动装配bean属性。
 	public static final int AUTOWIRE_BY_NAME = AutowireCapableBeanFactory.AUTOWIRE_BY_NAME;
 
 	/**
 	 * Constant that indicates autowiring bean properties by type.
 	 * @see #setAutowireMode
 	 */
+	// 按类型指示自动装配bean属性。
 	public static final int AUTOWIRE_BY_TYPE = AutowireCapableBeanFactory.AUTOWIRE_BY_TYPE;
 
 	/**
 	 * Constant that indicates autowiring a constructor.
 	 * @see #setAutowireMode
 	 */
+	// 指示自动生成构造函数。
 	public static final int AUTOWIRE_CONSTRUCTOR = AutowireCapableBeanFactory.AUTOWIRE_CONSTRUCTOR;
 
 	/**
@@ -97,6 +101,7 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	 * @deprecated as of Spring 3.0: If you are using mixed autowiring strategies,
 	 * use annotation-based autowiring for clearer demarcation of autowiring needs.
 	 */
+	// 指示确定适当的自动布线策略通过对bean类的自省。
 	@Deprecated
 	public static final int AUTOWIRE_AUTODETECT = AutowireCapableBeanFactory.AUTOWIRE_AUTODETECT;
 
@@ -104,12 +109,14 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	 * Constant that indicates no dependency check at all.
 	 * @see #setDependencyCheck
 	 */
+	// 表示根本不进行依赖项检查
 	public static final int DEPENDENCY_CHECK_NONE = 0;
 
 	/**
 	 * Constant that indicates dependency checking for object references.
 	 * @see #setDependencyCheck
 	 */
+	// 指示对象引用的依赖项检查
 	public static final int DEPENDENCY_CHECK_OBJECTS = 1;
 
 	/**
@@ -117,6 +124,7 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	 * @see #setDependencyCheck
 	 * @see org.springframework.beans.BeanUtils#isSimpleProperty
 	 */
+	// 指示对“简单”属性进行依赖检查。
 	public static final int DEPENDENCY_CHECK_SIMPLE = 2;
 
 	/**
@@ -124,6 +132,7 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	 * (object references as well as "simple" properties).
 	 * @see #setDependencyCheck
 	 */
+	// 指示对所有属性进行依赖项检查(对象引用以及“简单”属性)。
 	public static final int DEPENDENCY_CHECK_ALL = 3;
 
 	/**
@@ -136,6 +145,7 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	 * <p>Currently, the method names detected during destroy method inference
 	 * are "close" and "shutdown", if present on the specific bean class.
 	 */
+	// 指示容器应该尝试推断{@link setDestroyMethodName销毁方法名}，而不是方法名称的显式规范。
 	public static final String INFER_METHOD = "(inferred)";
 
 
@@ -209,6 +219,7 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	/**
 	 * Create a new AbstractBeanDefinition with default settings.
 	 */
+	// 完全用默认配置
 	protected AbstractBeanDefinition() {
 		this(null, null);
 	}
@@ -227,7 +238,9 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	 * bean definition.
 	 * @param original the original bean definition to copy from
 	 */
+	// 拷贝构造
 	protected AbstractBeanDefinition(BeanDefinition original) {
+		// 拷贝 BeanDefinition 定义的数据
 		setParentName(original.getParentName());
 		setBeanClassName(original.getBeanClassName());
 		setScope(original.getScope());
@@ -238,6 +251,7 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 		setSource(original.getSource());
 		copyAttributesFrom(original);
 
+		// 如果是 AbstractBeanDefinition，则拷贝相关内容
 		if (original instanceof AbstractBeanDefinition) {
 			AbstractBeanDefinition originalAbd = (AbstractBeanDefinition) original;
 			if (originalAbd.hasBeanClass()) {
@@ -272,6 +286,7 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 			setSynthetic(originalAbd.isSynthetic());
 			setResource(originalAbd.getResource());
 		}
+		// 否则，直接设置
 		else {
 			setConstructorArgumentValues(new ConstructorArgumentValues(original.getConstructorArgumentValues()));
 			setPropertyValues(new MutablePropertyValues(original.getPropertyValues()));
@@ -577,6 +592,7 @@ public abstract class AbstractBeanDefinition extends BeanMetadataAttributeAccess
 	 * @see #AUTOWIRE_CONSTRUCTOR
 	 * @see #AUTOWIRE_AUTODETECT
 	 */
+	// 自动装配模式
 	public void setAutowireMode(int autowireMode) {
 		this.autowireMode = autowireMode;
 	}

@@ -29,8 +29,8 @@ import org.springframework.lang.Nullable;
  * @author Rod Johnson
  * @author Juergen Hoeller
  */
-@SuppressWarnings("serial")
 // bean 相关的异常
+@SuppressWarnings("serial")
 public abstract class BeansException extends NestedRuntimeException {
 
 	/**

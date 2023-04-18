@@ -43,9 +43,11 @@ import org.springframework.util.ObjectUtils;
  * @see GenericBeanDefinition
  * @see RootBeanDefinition
  */
+// 孩子节点
 @SuppressWarnings("serial")
 public class ChildBeanDefinition extends AbstractBeanDefinition {
 
+	// 父 BeanDefinition 名称
 	@Nullable
 	private String parentName;
 

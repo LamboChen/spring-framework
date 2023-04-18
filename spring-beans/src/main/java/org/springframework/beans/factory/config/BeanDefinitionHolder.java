@@ -37,12 +37,15 @@ import org.springframework.util.StringUtils;
  * @see org.springframework.beans.factory.support.RootBeanDefinition
  * @see org.springframework.beans.factory.support.ChildBeanDefinition
  */
+// BeanDefinition 持有者
 public class BeanDefinitionHolder implements BeanMetadataElement {
 
+	// BeanDefinition 对象，经过包装后的
 	private final BeanDefinition beanDefinition;
 
 	private final String beanName;
 
+	// bean alias
 	@Nullable
 	private final String[] aliases;
 
@@ -77,6 +80,7 @@ public class BeanDefinitionHolder implements BeanMetadataElement {
 	 * it is {@code not} deeply copied.
 	 * @param beanDefinitionHolder the BeanDefinitionHolder to copy
 	 */
+	// 拷贝构造
 	public BeanDefinitionHolder(BeanDefinitionHolder beanDefinitionHolder) {
 		Assert.notNull(beanDefinitionHolder, "BeanDefinitionHolder must not be null");
 		this.beanDefinition = beanDefinitionHolder.getBeanDefinition();
@@ -88,6 +92,7 @@ public class BeanDefinitionHolder implements BeanMetadataElement {
 	/**
 	 * Return the wrapped BeanDefinition.
 	 */
+	// 返回包装后的 BeanDefinition
 	public BeanDefinition getBeanDefinition() {
 		return this.beanDefinition;
 	}
@@ -122,6 +127,7 @@ public class BeanDefinitionHolder implements BeanMetadataElement {
 	 * Determine whether the given candidate name matches the bean name
 	 * or the aliases stored in this bean definition.
 	 */
+	// 名称是否能匹配上，会进行处理
 	public boolean matchesName(@Nullable String candidateName) {
 		return (candidateName != null && (candidateName.equals(this.beanName) ||
 				candidateName.equals(BeanFactoryUtils.transformedBeanName(this.beanName)) ||
@@ -134,6 +140,7 @@ public class BeanDefinitionHolder implements BeanMetadataElement {
 	 * @see #getBeanName()
 	 * @see #getAliases()
 	 */
+	// 获得简短的、友好的描述信息
 	public String getShortDescription() {
 		if (this.aliases == null) {
 			return "Bean definition with name '" + this.beanName + "'";
@@ -147,6 +154,7 @@ public class BeanDefinitionHolder implements BeanMetadataElement {
 	 * @see #getShortDescription()
 	 * @see #getBeanDefinition()
 	 */
+	// 获取长的描述
 	public String getLongDescription() {
 		return getShortDescription() + ": " + this.beanDefinition;
 	}

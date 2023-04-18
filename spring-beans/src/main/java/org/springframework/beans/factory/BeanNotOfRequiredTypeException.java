@@ -25,16 +25,20 @@ import org.springframework.util.ClassUtils;
  * @author Rod Johnson
  * @author Juergen Hoeller
  */
+// bean 不是预期类型
 @SuppressWarnings("serial")
 public class BeanNotOfRequiredTypeException extends BeansException {
 
 	/** The name of the instance that was of the wrong type. */
+	// 错误类型的 beanName
 	private final String beanName;
 
 	/** The required type. */
+	// 预期类型
 	private final Class<?> requiredType;
 
 	/** The offending type. */
+	// 实际类型，非预期类型
 	private final Class<?> actualType;
 
 

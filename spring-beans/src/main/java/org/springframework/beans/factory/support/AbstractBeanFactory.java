@@ -1780,26 +1780,36 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 			Object beanInstance, String name, String beanName, @Nullable RootBeanDefinition mbd) {
 
 		// Don't let calling code try to dereference the factory if the bean isn't a factory.
+		// 如果bean不是工厂，不要让调用代码试图取消对工厂的引用。
 		if (BeanFactoryUtils.isFactoryDereference(name)) {
+			// 空
 			if (beanInstance instanceof NullBean) {
 				return beanInstance;
 			}
+
+			// beanInstance 不是工厂对象
 			if (!(beanInstance instanceof FactoryBean)) {
 				throw new BeanIsNotAFactoryException(beanName, beanInstance.getClass());
 			}
 		}
 
 		// Now we have the bean instance, which may be a normal bean or a FactoryBean.
+		// 现在我们有了bean实例，它可以是一个普通的bean，也可以是一个FactoryBean。
 		// If it's a FactoryBean, we use it to create a bean instance, unless the
 		// caller actually wants a reference to the factory.
+		// 如果它是FactoryBean，我们使用它来创建一个bean实例，除非调用者实际上需要对工厂的引用。
+		// 不是 FactoryBean 或者是工厂解引用对象
 		if (!(beanInstance instanceof FactoryBean) || BeanFactoryUtils.isFactoryDereference(name)) {
 			return beanInstance;
 		}
 
 		Object object = null;
+		// BeanDefinition 为空时，则直接通过 beanName 获取已经缓存的对象
 		if (mbd == null) {
 			object = getCachedObjectForFactoryBean(beanName);
 		}
+
+		// 如果对象为空，则继续寻找
 		if (object == null) {
 			// Return bean instance from factory.
 			FactoryBean<?> factory = (FactoryBean<?>) beanInstance;
@@ -1893,6 +1903,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	 * @see #containsBean
 	 * @see org.springframework.beans.factory.ListableBeanFactory#containsBeanDefinition
 	 */
+	// 检查此bean工厂是否包含具有给定名称的bean定义。
 	protected abstract boolean containsBeanDefinition(String beanName);
 
 	/**
@@ -1914,6 +1925,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	 * @see ChildBeanDefinition
 	 * @see org.springframework.beans.factory.config.ConfigurableListableBeanFactory#getBeanDefinition
 	 */
+	// 根据 beanName 获取 BeanDefinition
 	protected abstract BeanDefinition getBeanDefinition(String beanName) throws BeansException;
 
 	/**
