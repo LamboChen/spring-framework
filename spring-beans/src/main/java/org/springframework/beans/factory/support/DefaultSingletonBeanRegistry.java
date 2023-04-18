@@ -69,10 +69,11 @@ import org.springframework.util.StringUtils;
  * @see org.springframework.beans.factory.config.ConfigurableBeanFactory
  */
 // 默认的单例 BeanRegistry
+// Spring 循环依赖 https://juejin.cn/post/6985337310472568839
 public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements SingletonBeanRegistry {
 
 	/** Cache of singleton objects: bean name to bean instance. */
-	// 缓存单例 bean，这里是结果集，属于已经创建好的对象。
+	// 缓存单例 bean，这里是结果集，属于已经创建好的对象，即走完了 Bean 生命周期的 bean
 	// map(name -> instance)
 	private final Map<String, Object> singletonObjects = new ConcurrentHashMap<>(256);
 
@@ -81,7 +82,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	private final Map<String, ObjectFactory<?>> singletonFactories = new HashMap<>(16);
 
 	/** Cache of early singleton objects: bean name to bean instance. */
-	// 缓存预先/可提前创建的单例对象
+	// 缓存预先/可提前创建的单例对象。 如是 AOP，则是 AOP 代理对象
 	private final Map<String, Object> earlySingletonObjects = new HashMap<>(16);
 
 	/** Set of registered singletons, containing the bean names in registration order. */
@@ -120,12 +121,14 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	private final Map<String, Set<String>> dependenciesForBeanMap = new ConcurrentHashMap<>(64);
 
 
+	// 直接注册单例对象
 	@Override
 	public void registerSingleton(String beanName, Object singletonObject) throws IllegalStateException {
 		Assert.notNull(beanName, "Bean name must not be null");
 		Assert.notNull(singletonObject, "Singleton object must not be null");
 		synchronized (this.singletonObjects) {
 			Object oldObject = this.singletonObjects.get(beanName);
+			// double check，不允许单例对象被重复注册
 			if (oldObject != null) {
 				throw new IllegalStateException("Could not register object [" + singletonObject +
 						"] under bean name '" + beanName + "': there is already object [" + oldObject + "] bound");
@@ -140,6 +143,7 @@ public class DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements
 	 * @param beanName the name of the bean
 	 * @param singletonObject the singleton object
 	 */
+	// 调用该方法，需要事先拿到 singleObjects 监视器锁
 	protected void addSingleton(String beanName, Object singletonObject) {
 		synchronized (this.singletonObjects) {
 			this.singletonObjects.put(beanName, singletonObject);

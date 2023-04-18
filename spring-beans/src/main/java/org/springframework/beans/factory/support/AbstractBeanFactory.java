@@ -1420,6 +1420,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	protected void clearMergedBeanDefinition(String beanName) {
 		RootBeanDefinition bd = this.mergedBeanDefinitions.get(beanName);
 		if (bd != null) {
+			// 标记为需要合并
 			bd.stale = true;
 		}
 	}
@@ -1761,6 +1762,7 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 	 * @since 4.2.2
 	 * @see #markBeanAsCreated
 	 */
+	// 检查这个工厂的 bean 创建阶段是否已经开始，
 	protected boolean hasBeanCreationStarted() {
 		return !this.alreadyCreated.isEmpty();
 	}

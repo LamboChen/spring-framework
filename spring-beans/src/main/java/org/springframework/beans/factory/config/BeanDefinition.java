@@ -303,6 +303,7 @@ public interface BeanDefinition extends AttributeAccessor, BeanMetadataElement {
 	 * @see #ROLE_SUPPORT
 	 * @see #ROLE_INFRASTRUCTURE
 	 */
+	// 获取此 {@code BeanDefinition} 的角色提示。角色提示为框架和工具提供了特定 {@code BeanDefinition} 的角色和重要性的指示。
 	int getRole();
 
 	/**

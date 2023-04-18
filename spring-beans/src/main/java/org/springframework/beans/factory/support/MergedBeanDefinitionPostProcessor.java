@@ -35,6 +35,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
  * @since 2.5
  * @see org.springframework.beans.factory.config.ConfigurableBeanFactory#getMergedBeanDefinition
  */
+// 提供 merge 能力，需要允许 BeanDefinition 可被覆盖
 public interface MergedBeanDefinitionPostProcessor extends BeanPostProcessor {
 
 	/**
@@ -54,6 +55,7 @@ public interface MergedBeanDefinitionPostProcessor extends BeanPostProcessor {
 	 * @since 5.1
 	 * @see DefaultListableBeanFactory#resetBeanDefinition
 	 */
+	// 重置 BeanDefinition
 	default void resetBeanDefinition(String beanName) {
 	}
 

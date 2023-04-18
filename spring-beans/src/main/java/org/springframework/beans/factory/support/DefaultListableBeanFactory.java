@@ -902,6 +902,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 	// Implementation of BeanDefinitionRegistry interface
 	//---------------------------------------------------------------------
 
+	// 注册 BeanDefinition，直接使用 beanName
 	@Override
 	public void registerBeanDefinition(String beanName, BeanDefinition beanDefinition)
 			throws BeanDefinitionStoreException {
@@ -911,6 +912,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 
 		if (beanDefinition instanceof AbstractBeanDefinition) {
 			try {
+				// 前置校验
 				((AbstractBeanDefinition) beanDefinition).validate();
 			}
 			catch (BeanDefinitionValidationException ex) {
@@ -919,11 +921,14 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 			}
 		}
 
+		// 获取是否已注册
 		BeanDefinition existingDefinition = this.beanDefinitionMap.get(beanName);
 		if (existingDefinition != null) {
+			// 已经注册，且不允许 BeanDefinition 覆盖，则刨除异常
 			if (!isAllowBeanDefinitionOverriding()) {
 				throw new BeanDefinitionOverrideException(beanName, beanDefinition, existingDefinition);
 			}
+			// role 权重更大
 			else if (existingDefinition.getRole() < beanDefinition.getRole()) {
 				// e.g. was ROLE_APPLICATION, now overriding with ROLE_SUPPORT or ROLE_INFRASTRUCTURE
 				if (logger.isInfoEnabled()) {
@@ -932,6 +937,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 							existingDefinition + "] with [" + beanDefinition + "]");
 				}
 			}
+			// BeanDefinition 不相等
 			else if (!beanDefinition.equals(existingDefinition)) {
 				if (logger.isDebugEnabled()) {
 					logger.debug("Overriding bean definition for bean '" + beanName +
@@ -939,6 +945,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 							"] with [" + beanDefinition + "]");
 				}
 			}
+			// 其它情况
 			else {
 				if (logger.isTraceEnabled()) {
 					logger.trace("Overriding bean definition for bean '" + beanName +
@@ -946,22 +953,31 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 							"] with [" + beanDefinition + "]");
 				}
 			}
+
+			// 允许覆盖，则直接进行覆盖。可得，BeanDefinition 允许覆盖情况下更晚加载则生效
 			this.beanDefinitionMap.put(beanName, beanDefinition);
 		}
+		// 未加载过 BeanDefinition
 		else {
+			// Bean已经开始创建了
 			if (hasBeanCreationStarted()) {
 				// Cannot modify startup-time collection elements anymore (for stable iteration)
+				// 已经创建了，拿到锁后直接就 push？ 岂不是会造成覆盖？
 				synchronized (this.beanDefinitionMap) {
+					// 直接 push ，覆盖写
 					this.beanDefinitionMap.put(beanName, beanDefinition);
 					List<String> updatedDefinitions = new ArrayList<>(this.beanDefinitionNames.size() + 1);
 					updatedDefinitions.addAll(this.beanDefinitionNames);
+					// 记录当前 beanName
 					updatedDefinitions.add(beanName);
 					this.beanDefinitionNames = updatedDefinitions;
 					removeManualSingletonName(beanName);
 				}
 			}
 			else {
+				// 还在启动注册阶段
 				// Still in startup registration phase
+				// 直接写入
 				this.beanDefinitionMap.put(beanName, beanDefinition);
 				this.beanDefinitionNames.add(beanName);
 				removeManualSingletonName(beanName);
@@ -969,7 +985,9 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 			this.frozenBeanDefinitionNames = null;
 		}
 
+		// 存在 BeanDefinition 或者已经有单例对象
 		if (existingDefinition != null || containsSingleton(beanName)) {
+			// 重置 BeanDefinition
 			resetBeanDefinition(beanName);
 		}
 	}
@@ -991,6 +1009,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 			synchronized (this.beanDefinitionMap) {
 				List<String> updatedDefinitions = new ArrayList<>(this.beanDefinitionNames);
 				updatedDefinitions.remove(beanName);
+				// 覆盖写 copy on write
 				this.beanDefinitionNames = updatedDefinitions;
 			}
 		}
@@ -1021,11 +1040,14 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 		// Remove corresponding bean from singleton cache, if any. Shouldn't usually
 		// be necessary, rather just meant for overriding a context's default beans
 		// (e.g. the default StaticMessageSource in a StaticApplicationContext).
+		// 从单例缓存中删除相应的 bean（如果有）。
+		// 通常不需要，而只是用于覆盖上下文的默认 bean（例如 StaticApplicationContext 中的默认 StaticMessageSource）。
 		destroySingleton(beanName);
 
 		// Notify all post-processors that the specified bean definition has been reset.
 		for (BeanPostProcessor processor : getBeanPostProcessors()) {
 			if (processor instanceof MergedBeanDefinitionPostProcessor) {
+				// 触发 reset 操作。如果未实现，则不具备能力
 				((MergedBeanDefinitionPostProcessor) processor).resetBeanDefinition(beanName);
 			}
 		}
@@ -1044,15 +1066,19 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 	/**
 	 * Only allows alias overriding if bean definition overriding is allowed.
 	 */
+	// 是否允许别名覆盖
 	@Override
 	protected boolean allowAliasOverriding() {
+		// 别名覆盖，依赖着有多个 BeanDefinition，故复用
 		return isAllowBeanDefinitionOverriding();
 	}
 
+	// 注册单例对象，此处是直接 Bean 对象，并非 BeanDefinition
 	@Override
 	public void registerSingleton(String beanName, Object singletonObject) throws IllegalStateException {
 		super.registerSingleton(beanName, singletonObject);
 		updateManualSingletonNames(set -> set.add(beanName), set -> !this.beanDefinitionMap.containsKey(beanName));
+		// 注册完成后，清除缓存
 		clearByTypeCache();
 	}
 
