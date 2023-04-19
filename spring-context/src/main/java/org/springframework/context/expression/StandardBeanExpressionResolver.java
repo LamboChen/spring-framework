@@ -47,6 +47,7 @@ import org.springframework.util.StringUtils;
  * @see org.springframework.expression.spel.standard.SpelExpressionParser
  * @see org.springframework.expression.spel.support.StandardEvaluationContext
  */
+// 标准 Bean 表达式解析器
 public class StandardBeanExpressionResolver implements BeanExpressionResolver {
 
 	/** Default expression prefix: "#{". */
@@ -55,7 +56,7 @@ public class StandardBeanExpressionResolver implements BeanExpressionResolver {
 	/** Default expression suffix: "}". */
 	public static final String DEFAULT_EXPRESSION_SUFFIX = "}";
 
-
+	// 表达式前缀
 	private String expressionPrefix = DEFAULT_EXPRESSION_PREFIX;
 
 	private String expressionSuffix = DEFAULT_EXPRESSION_SUFFIX;

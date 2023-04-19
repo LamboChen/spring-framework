@@ -38,6 +38,7 @@ import java.io.InputStream;
  * @see InputStreamResource
  * @see ByteArrayResource
  */
+// 输入流源，核心在于用 InputStream 表达 source
 public interface InputStreamSource {
 
 	/**

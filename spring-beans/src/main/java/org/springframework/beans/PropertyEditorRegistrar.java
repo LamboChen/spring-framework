@@ -30,6 +30,7 @@ package org.springframework.beans;
  * @see PropertyEditorRegistry
  * @see java.beans.PropertyEditor
  */
+// 属性编辑器注册器
 public interface PropertyEditorRegistrar {
 
 	/**

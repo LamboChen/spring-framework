@@ -30,6 +30,7 @@ import java.lang.instrument.ClassFileTransformer;
  * @since 2.0
  * @see java.lang.instrument.ClassFileTransformer
  */
+// 加载事件编制器
 public interface LoadTimeWeaver {
 
 	/**

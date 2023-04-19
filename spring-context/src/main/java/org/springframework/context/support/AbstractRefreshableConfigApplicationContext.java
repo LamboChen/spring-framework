@@ -43,6 +43,7 @@ public abstract class AbstractRefreshableConfigApplicationContext extends Abstra
 	@Nullable
 	private String[] configLocations;
 
+	// 标注 id 被设置过
 	private boolean setIdCalled = false;
 
 

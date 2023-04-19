@@ -34,6 +34,7 @@ import org.springframework.lang.Nullable;
  * @see BeanWrapper
  * @see org.springframework.validation.DataBinder
  */
+// 属性编辑器注册表
 public interface PropertyEditorRegistry {
 
 	/**
@@ -41,6 +42,7 @@ public interface PropertyEditorRegistry {
 	 * @param requiredType the type of the property
 	 * @param propertyEditor the editor to register
 	 */
+	// 为给定类型的所有属性注册给定的自定义属性编辑器
 	void registerCustomEditor(Class<?> requiredType, PropertyEditor propertyEditor);
 
 	/**

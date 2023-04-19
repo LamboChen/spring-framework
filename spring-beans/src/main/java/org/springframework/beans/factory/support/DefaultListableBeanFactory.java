@@ -142,6 +142,7 @@ public class DefaultListableBeanFactory extends AbstractAutowireCapableBeanFacto
 			new ConcurrentHashMap<>(8);
 
 	/** Optional id for this factory, for serialization purposes. */
+	// 此工厂的可选 ID，用于序列化目的
 	@Nullable
 	private String serializationId;
 

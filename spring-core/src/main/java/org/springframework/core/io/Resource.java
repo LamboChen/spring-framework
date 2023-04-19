@@ -49,6 +49,7 @@ import org.springframework.lang.Nullable;
  * @see ByteArrayResource
  * @see InputStreamResource
  */
+// 资源顶层抽象
 public interface Resource extends InputStreamSource {
 
 	/**

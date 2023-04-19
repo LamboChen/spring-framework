@@ -41,6 +41,7 @@ import org.springframework.util.Assert;
  * @see LoadTimeWeaverAware
  * @see org.springframework.context.ConfigurableApplicationContext#LOAD_TIME_WEAVER_BEAN_NAME
  */
+// 加载时间编制器处理器
 public class LoadTimeWeaverAwareProcessor implements BeanPostProcessor, BeanFactoryAware {
 
 	@Nullable
