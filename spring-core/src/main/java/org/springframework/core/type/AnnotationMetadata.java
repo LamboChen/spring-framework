@@ -99,6 +99,7 @@ public interface AnnotationMetadata extends ClassMetadata, AnnotatedTypeMetadata
 	 * @param annotationName the fully qualified class name of the annotation
 	 * type to look for
 	 */
+	// 是否存在被标注的方法
 	default boolean hasAnnotatedMethods(String annotationName) {
 		return !getAnnotatedMethods(annotationName).isEmpty();
 	}
@@ -114,6 +115,7 @@ public interface AnnotationMetadata extends ClassMetadata, AnnotatedTypeMetadata
 	 * annotation. The return value will be an empty set if no methods match
 	 * the annotation type.
 	 */
+	// 获取被标注了注解的方法元信息
 	Set<MethodMetadata> getAnnotatedMethods(String annotationName);
 
 

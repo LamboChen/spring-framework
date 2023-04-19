@@ -117,6 +117,7 @@ public abstract class PropertiesLoaderUtils {
 	 * @throws IOException if loading failed
 	 * @see #fillProperties(java.util.Properties, Resource)
 	 */
+	// 从资源中加载 properties
 	public static Properties loadProperties(Resource resource) throws IOException {
 		Properties props = new Properties();
 		fillProperties(props, resource);
@@ -129,10 +130,12 @@ public abstract class PropertiesLoaderUtils {
 	 * @param resource the resource to load from
 	 * @throws IOException if loading failed
 	 */
+	// 填充 properties
 	public static void fillProperties(Properties props, Resource resource) throws IOException {
 		InputStream is = resource.getInputStream();
 		try {
 			String filename = resource.getFilename();
+			// 如果资源是 xml，则选择 xml loader
 			if (filename != null && filename.endsWith(XML_FILE_EXTENSION)) {
 				props.loadFromXML(is);
 			}

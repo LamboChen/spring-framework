@@ -39,6 +39,7 @@ import org.springframework.util.MultiValueMap;
  * @author Phillip Webb
  * @since 3.0
  */
+// 标准的 MethodMetadata
 public class StandardMethodMetadata implements MethodMetadata {
 
 	private final Method introspectedMethod;
@@ -88,6 +89,7 @@ public class StandardMethodMetadata implements MethodMetadata {
 	/**
 	 * Return the underlying Method.
 	 */
+	// 返回底层方法。
 	public final Method getIntrospectedMethod() {
 		return this.introspectedMethod;
 	}

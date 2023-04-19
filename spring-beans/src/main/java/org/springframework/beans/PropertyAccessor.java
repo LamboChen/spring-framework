@@ -32,6 +32,7 @@ import org.springframework.lang.Nullable;
  * @see PropertyAccessorFactory#forBeanPropertyAccess
  * @see PropertyAccessorFactory#forDirectFieldAccess
  */
+// property 访问器
 public interface PropertyAccessor {
 
 	/**
@@ -78,6 +79,7 @@ public interface PropertyAccessor {
 	 * (may be a nested path and/or an indexed/mapped property)
 	 * @return whether the property is readable
 	 */
+	// 是可读的 property
 	boolean isReadableProperty(String propertyName);
 
 	/**
@@ -87,6 +89,7 @@ public interface PropertyAccessor {
 	 * (may be a nested path and/or an indexed/mapped property)
 	 * @return whether the property is writable
 	 */
+	// 是可写的 property
 	boolean isWritableProperty(String propertyName);
 
 	/**
@@ -100,6 +103,7 @@ public interface PropertyAccessor {
 	 * @throws PropertyAccessException if the property was valid but the
 	 * accessor method failed
 	 */
+	// 获取 property 类型
 	@Nullable
 	Class<?> getPropertyType(String propertyName) throws BeansException;
 
@@ -113,6 +117,7 @@ public interface PropertyAccessor {
 	 * @throws PropertyAccessException if the property was valid but the
 	 * accessor method failed
 	 */
+	// 获取 property 类型描述器
 	@Nullable
 	TypeDescriptor getPropertyTypeDescriptor(String propertyName) throws BeansException;
 
@@ -126,6 +131,7 @@ public interface PropertyAccessor {
 	 * @throws PropertyAccessException if the property was valid but the
 	 * accessor method failed
 	 */
+	// 获取 property 值
 	@Nullable
 	Object getPropertyValue(String propertyName) throws BeansException;
 
@@ -139,6 +145,7 @@ public interface PropertyAccessor {
 	 * @throws PropertyAccessException if the property was valid but the
 	 * accessor method failed or a type mismatch occurred
 	 */
+	// 设置 property 值
 	void setPropertyValue(String propertyName, @Nullable Object value) throws BeansException;
 
 	/**
@@ -149,6 +156,7 @@ public interface PropertyAccessor {
 	 * @throws PropertyAccessException if the property was valid but the
 	 * accessor method failed or a type mismatch occurred
 	 */
+	// 设置 property 值
 	void setPropertyValue(PropertyValue pv) throws BeansException;
 
 	/**
@@ -165,6 +173,7 @@ public interface PropertyAccessor {
 	 * all individual PropertyAccessExceptions. All other properties will have been
 	 * successfully updated.
 	 */
+	// 设置属性值，可设置多个
 	void setPropertyValues(Map<?, ?> map) throws BeansException;
 
 	/**

@@ -59,12 +59,14 @@ import org.springframework.util.StringUtils;
  * @author Sam Brannen
  * @since 3.2
  */
+// spring.factories 文件加载器
 public final class SpringFactoriesLoader {
 
 	/**
 	 * The location to look for factories.
 	 * <p>Can be present in multiple JAR files.
 	 */
+	// factories 资源文件路径
 	public static final String FACTORIES_RESOURCE_LOCATION = "META-INF/spring.factories";
 
 
@@ -89,10 +91,12 @@ public final class SpringFactoriesLoader {
 	 * be loaded or if an error occurs while instantiating any factory
 	 * @see #loadFactoryNames
 	 */
+	// 获取指定类型的 factories，
 	public static <T> List<T> loadFactories(Class<T> factoryType, @Nullable ClassLoader classLoader) {
 		Assert.notNull(factoryType, "'factoryType' must not be null");
 		ClassLoader classLoaderToUse = classLoader;
 		if (classLoaderToUse == null) {
+			// 采用当前类的 ClassLoader 进行加载
 			classLoaderToUse = SpringFactoriesLoader.class.getClassLoader();
 		}
 		List<String> factoryImplementationNames = loadFactoryNames(factoryType, classLoaderToUse);
@@ -103,6 +107,7 @@ public final class SpringFactoriesLoader {
 		for (String factoryImplementationName : factoryImplementationNames) {
 			result.add(instantiateFactory(factoryImplementationName, factoryType, classLoaderToUse));
 		}
+		// 按照 Order 排序
 		AnnotationAwareOrderComparator.sort(result);
 		return result;
 	}
@@ -117,18 +122,24 @@ public final class SpringFactoriesLoader {
 	 * @throws IllegalArgumentException if an error occurs while loading factory names
 	 * @see #loadFactories
 	 */
+	// 加载 Factory 名称，即读取文件中的原始配置
 	public static List<String> loadFactoryNames(Class<?> factoryType, @Nullable ClassLoader classLoader) {
+		// 全限定名
 		String factoryTypeName = factoryType.getName();
+		// 先加载所有的 spring.factories，然后根据 factoryTypeName 获取结果返回
 		return loadSpringFactories(classLoader).getOrDefault(factoryTypeName, Collections.emptyList());
 	}
 
+	// 加载 spring.factories 整个文件
 	private static Map<String, List<String>> loadSpringFactories(@Nullable ClassLoader classLoader) {
 		MultiValueMap<String, String> result = cache.get(classLoader);
+		// 如果之前已经加载过，则直接返回
 		if (result != null) {
 			return result;
 		}
 
 		try {
+			// 获得所有的 spring.factories 资源 URL
 			Enumeration<URL> urls = (classLoader != null ?
 					classLoader.getResources(FACTORIES_RESOURCE_LOCATION) :
 					ClassLoader.getSystemResources(FACTORIES_RESOURCE_LOCATION));
@@ -136,10 +147,12 @@ public final class SpringFactoriesLoader {
 			while (urls.hasMoreElements()) {
 				URL url = urls.nextElement();
 				UrlResource resource = new UrlResource(url);
+				// 获取到配置文件中的内容， properties 格式
 				Properties properties = PropertiesLoaderUtils.loadProperties(resource);
 				for (Map.Entry<?, ?> entry : properties.entrySet()) {
 					String factoryTypeName = ((String) entry.getKey()).trim();
 					for (String factoryImplementationName : StringUtils.commaDelimitedListToStringArray((String) entry.getValue())) {
+						// 逐一添加进结果集
 						result.add(factoryTypeName, factoryImplementationName.trim());
 					}
 				}
@@ -153,14 +166,17 @@ public final class SpringFactoriesLoader {
 		}
 	}
 
+	// 实例化 factory 对象
 	@SuppressWarnings("unchecked")
 	private static <T> T instantiateFactory(String factoryImplementationName, Class<T> factoryType, ClassLoader classLoader) {
 		try {
+			// 反射获得类对象
 			Class<?> factoryImplementationClass = ClassUtils.forName(factoryImplementationName, classLoader);
 			if (!factoryType.isAssignableFrom(factoryImplementationClass)) {
 				throw new IllegalArgumentException(
 						"Class [" + factoryImplementationName + "] is not assignable to factory type [" + factoryType.getName() + "]");
 			}
+			// 实例化返回
 			return (T) ReflectionUtils.accessibleConstructor(factoryImplementationClass).newInstance();
 		}
 		catch (Throwable ex) {

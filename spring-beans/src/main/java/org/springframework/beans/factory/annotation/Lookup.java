@@ -56,6 +56,7 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
+// 查找
 public @interface Lookup {
 
 	/**

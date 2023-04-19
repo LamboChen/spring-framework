@@ -38,6 +38,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
+// 将类标记为符合spring驱动配置的条件。
 public @interface Configurable {
 
 	/**

@@ -35,6 +35,7 @@ import org.springframework.context.ConfigurableApplicationContext;
  * @see ContextCustomizerFactory
  * @see org.springframework.test.context.support.AbstractContextLoader#customizeContext
  */
+// 上下文编辑器
 @FunctionalInterface
 public interface ContextCustomizer {
 

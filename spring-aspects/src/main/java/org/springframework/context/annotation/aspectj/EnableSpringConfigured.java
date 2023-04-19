@@ -43,6 +43,7 @@ import org.springframework.context.annotation.Import;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Import(SpringConfiguredConfiguration.class)
+// 开启 Spring configure
 public @interface EnableSpringConfigured {
 
 }

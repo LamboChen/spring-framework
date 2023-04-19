@@ -36,6 +36,7 @@ import org.springframework.lang.Nullable;
  * @author Sam Brannen
  * @since 4.3
  */
+// 上下文编辑器 工厂
 @FunctionalInterface
 public interface ContextCustomizerFactory {
 

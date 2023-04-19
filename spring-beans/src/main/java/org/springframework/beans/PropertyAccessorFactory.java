@@ -24,6 +24,7 @@ package org.springframework.beans;
  * @author Juergen Hoeller
  * @since 2.5.2
  */
+// 属性访问器工厂
 public final class PropertyAccessorFactory {
 
 	private PropertyAccessorFactory() {

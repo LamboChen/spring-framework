@@ -46,6 +46,7 @@ import org.springframework.lang.Nullable;
  * @see CachedIntrospectionResults
  * @see org.springframework.core.io.support.SpringFactoriesLoader
  */
+// BeanInfo 工厂
 public interface BeanInfoFactory {
 
 	/**

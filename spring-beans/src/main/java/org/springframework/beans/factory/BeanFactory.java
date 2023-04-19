@@ -206,6 +206,7 @@ public interface BeanFactory {
 	 * @throws BeansException if the bean could not be created
 	 * @since 4.1
 	 */
+	// 获得指定类型的 bean
 	<T> T getBean(Class<T> requiredType, Object... args) throws BeansException;
 
 	/**
@@ -216,6 +217,7 @@ public interface BeanFactory {
 	 * @since 5.1
 	 * @see #getBeanProvider(ResolvableType)
 	 */
+	// 获得指定类型的 bean provider
 	<T> ObjectProvider<T> getBeanProvider(Class<T> requiredType);
 
 	/**

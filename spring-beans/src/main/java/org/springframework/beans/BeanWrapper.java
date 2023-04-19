@@ -46,6 +46,7 @@ import java.beans.PropertyDescriptor;
  * @see org.springframework.validation.BeanPropertyBindingResult
  * @see org.springframework.validation.DataBinder#initBeanPropertyAccess()
  */
+// Bean wrapper
 public interface BeanWrapper extends ConfigurablePropertyAccessor {
 
 	/**
@@ -53,6 +54,7 @@ public interface BeanWrapper extends ConfigurablePropertyAccessor {
 	 * <p>Default is unlimited on a plain BeanWrapper.
 	 * @since 4.1
 	 */
+	// 指定数组和集合自动增长的限制。
 	void setAutoGrowCollectionLimit(int autoGrowCollectionLimit);
 
 	/**
@@ -64,11 +66,13 @@ public interface BeanWrapper extends ConfigurablePropertyAccessor {
 	/**
 	 * Return the bean instance wrapped by this object.
 	 */
+	// 返回已经 wrap 后的对象实例
 	Object getWrappedInstance();
 
 	/**
 	 * Return the type of the wrapped bean instance.
 	 */
+	// 获得 wrap 后的对象实例类型
 	Class<?> getWrappedClass();
 
 	/**
@@ -76,6 +80,8 @@ public interface BeanWrapper extends ConfigurablePropertyAccessor {
 	 * (as determined by standard JavaBeans introspection).
 	 * @return the PropertyDescriptors for the wrapped object
 	 */
+	// 获取包装对象的PropertyDescriptors
+	// (由标准JavaBeans自省确定)。
 	PropertyDescriptor[] getPropertyDescriptors();
 
 	/**

@@ -24,6 +24,7 @@ package org.springframework.beans.factory.config;
  * @since 5.0
  * @see org.springframework.beans.factory.support.BeanDefinitionBuilder#applyCustomizers
  */
+// BeanDefinition 定制化
 @FunctionalInterface
 public interface BeanDefinitionCustomizer {
 

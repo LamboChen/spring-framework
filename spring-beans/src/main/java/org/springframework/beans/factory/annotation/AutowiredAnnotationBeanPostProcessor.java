@@ -128,6 +128,7 @@ import org.springframework.util.StringUtils;
  * @see Autowired
  * @see Value
  */
+// autowired 注解的 bean port processor
 public class AutowiredAnnotationBeanPostProcessor extends InstantiationAwareBeanPostProcessorAdapter
 		implements MergedBeanDefinitionPostProcessor, PriorityOrdered, BeanFactoryAware {
 

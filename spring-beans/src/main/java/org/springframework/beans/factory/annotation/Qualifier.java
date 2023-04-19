@@ -37,6 +37,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
+// 限定器，指定 auto wired 哪个名称的对象
 public @interface Qualifier {
 
 	String value() default "";

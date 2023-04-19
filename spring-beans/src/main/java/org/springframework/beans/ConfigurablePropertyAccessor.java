@@ -31,6 +31,7 @@ import org.springframework.lang.Nullable;
  * @since 2.0
  * @see BeanWrapper
  */
+// 可配置的属性访问器
 public interface ConfigurablePropertyAccessor extends PropertyAccessor, PropertyEditorRegistry, TypeConverter {
 
 	/**
