@@ -49,5 +49,6 @@ import javax.annotation.meta.TypeQualifierNickname;
 @Documented
 @Nonnull
 @TypeQualifierNickname
+// 不能为空
 public @interface NonNull {
 }

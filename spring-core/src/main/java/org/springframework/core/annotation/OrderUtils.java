@@ -53,6 +53,7 @@ public abstract class OrderUtils {
 	 * @since 5.0
 	 * @see #getPriority(Class)
 	 */
+	// 获取某个类的顺序
 	public static int getOrder(Class<?> type, int defaultOrder) {
 		Integer order = getOrder(type);
 		return (order != null ? order : defaultOrder);
@@ -79,6 +80,7 @@ public abstract class OrderUtils {
 	 * @return the order value, or {@code null} if none can be found
 	 * @see #getPriority(Class)
 	 */
+	// 从类上获取 Order 值
 	@Nullable
 	public static Integer getOrder(Class<?> type) {
 		return getOrderFromAnnotations(type, MergedAnnotations.from(type, SearchStrategy.TYPE_HIERARCHY));

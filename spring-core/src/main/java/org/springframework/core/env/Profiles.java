@@ -28,6 +28,7 @@ import java.util.function.Predicate;
  * @author Phillip Webb
  * @since 5.1
  */
+// 配置文件
 @FunctionalInterface
 public interface Profiles {
 

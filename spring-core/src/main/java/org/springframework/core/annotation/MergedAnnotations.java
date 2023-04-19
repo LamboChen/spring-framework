@@ -398,6 +398,7 @@ public interface MergedAnnotations extends Iterable<MergedAnnotation<Annotation>
 	 * <p>Each strategy creates a different set of aggregates that will be
 	 * combined to create the final {@link MergedAnnotations}.
 	 */
+	// 搜索的策略
 	enum SearchStrategy {
 
 		/**
@@ -405,6 +406,7 @@ public interface MergedAnnotations extends Iterable<MergedAnnotation<Annotation>
 		 * {@link Inherited @Inherited} annotations and without searching
 		 * superclasses or implemented interfaces.
 		 */
+		// 直接的，即只从当前类获得
 		DIRECT,
 
 		/**
@@ -415,6 +417,7 @@ public interface MergedAnnotations extends Iterable<MergedAnnotation<Annotation>
 		 * {@linkplain AnnotatedElement annotated elements}. This strategy does
 		 * not search implemented interfaces.
 		 */
+		// 注解集成
 		INHERITED_ANNOTATIONS,
 
 		/**
@@ -423,6 +426,7 @@ public interface MergedAnnotations extends Iterable<MergedAnnotation<Annotation>
 		 * do not need to be meta-annotated with {@link Inherited @Inherited}.
 		 * This strategy does not search implemented interfaces.
 		 */
+		// 超类
 		SUPERCLASS,
 
 		/**
@@ -430,6 +434,7 @@ public interface MergedAnnotations extends Iterable<MergedAnnotation<Annotation>
 		 * superclasses and implemented interfaces. Superclass annotations do
 		 * not need to be meta-annotated with {@link Inherited @Inherited}.
 		 */
+		// 类型层次结构，意思是可以从父类中获取
 		TYPE_HIERARCHY,
 
 		/**
@@ -441,6 +446,7 @@ public interface MergedAnnotations extends Iterable<MergedAnnotation<Annotation>
 		 * searching a {@link Method} source, this strategy is identical to
 		 * {@link #TYPE_HIERARCHY}.
 		 */
+		// 类层次结构、和内部类
 		TYPE_HIERARCHY_AND_ENCLOSING_CLASSES
 	}
 

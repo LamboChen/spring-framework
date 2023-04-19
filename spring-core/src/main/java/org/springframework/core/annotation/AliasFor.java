@@ -174,6 +174,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 @Documented
+// 声明是某个属性的别名
 public @interface AliasFor {
 
 	/**
@@ -197,6 +198,7 @@ public @interface AliasFor {
 	 * <p>Defaults to {@link Annotation}, implying that the aliased attribute is
 	 * declared in the same annotation as <em>this</em> attribute.
 	 */
+	// 指明其他的注解
 	Class<? extends Annotation> annotation() default Annotation.class;
 
 }

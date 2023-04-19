@@ -45,5 +45,6 @@ import javax.annotation.meta.TypeQualifierDefault;
 @Documented
 @Nonnull
 @TypeQualifierDefault(ElementType.FIELD)
+// 属性不能为空
 public @interface NonNullFields {
 }

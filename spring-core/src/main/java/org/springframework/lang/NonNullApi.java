@@ -46,5 +46,6 @@ import javax.annotation.meta.TypeQualifierDefault;
 @Documented
 @Nonnull
 @TypeQualifierDefault({ElementType.METHOD, ElementType.PARAMETER})
+// 标注参数和返回值不能为空，通常情况下可以标注某一个包
 public @interface NonNullApi {
 }
