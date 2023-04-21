@@ -232,6 +232,7 @@ public interface ConfigurableBeanFactory extends HierarchicalBeanFactory, Single
 	 * @return the resolved value (may be the original value as-is)
 	 * @since 3.0
 	 */
+	// 解析给定的嵌入值，例如注释属性。
 	@Nullable
 	String resolveEmbeddedValue(String value);
 

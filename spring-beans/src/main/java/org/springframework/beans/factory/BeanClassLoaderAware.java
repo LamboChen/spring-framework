@@ -35,6 +35,7 @@ package org.springframework.beans.factory;
  * @see BeanFactoryAware
  * @see InitializingBean
  */
+// bean ClassLoader aware
 public interface BeanClassLoaderAware extends Aware {
 
 	/**
@@ -47,6 +48,7 @@ public interface BeanClassLoaderAware extends Aware {
 	 * method or a custom init-method.
 	 * @param classLoader the owning class loader
 	 */
+	// bean 属性填充之后，初始化回调之前
 	void setBeanClassLoader(ClassLoader classLoader);
 
 }

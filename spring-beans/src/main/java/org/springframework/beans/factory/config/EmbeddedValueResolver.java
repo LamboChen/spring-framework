@@ -34,6 +34,7 @@ import org.springframework.util.StringValueResolver;
  * @see ConfigurableBeanFactory#getBeanExpressionResolver()
  * @see BeanExpressionContext
  */
+// 潜入式 值解析器
 public class EmbeddedValueResolver implements StringValueResolver {
 
 	private final BeanExpressionContext exprContext;

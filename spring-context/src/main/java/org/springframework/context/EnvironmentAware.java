@@ -27,6 +27,7 @@ import org.springframework.core.env.Environment;
  * @since 3.1
  * @see org.springframework.core.env.EnvironmentCapable
  */
+// Environment aware
 public interface EnvironmentAware extends Aware {
 
 	/**

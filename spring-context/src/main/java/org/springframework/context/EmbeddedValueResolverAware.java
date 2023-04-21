@@ -33,6 +33,7 @@ import org.springframework.util.StringValueResolver;
  * @see org.springframework.beans.factory.config.ConfigurableBeanFactory#getBeanExpressionResolver()
  * @see org.springframework.beans.factory.config.EmbeddedValueResolver
  */
+// EmbeddedValueResolver aware
 public interface EmbeddedValueResolverAware extends Aware {
 
 	/**

@@ -39,6 +39,7 @@ package org.springframework.context;
  * @see org.springframework.web.servlet.FrameworkServlet#setContextInitializerClasses
  * @see org.springframework.web.servlet.FrameworkServlet#applyInitializers
  */
+// 应用上下文初始化器
 public interface ApplicationContextInitializer<C extends ConfigurableApplicationContext> {
 
 	/**
